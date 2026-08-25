@@ -1,4 +1,4 @@
-import { CheckCircle2, Container, Gauge, Layers, Zap } from "lucide-react";
+import { Container, Gauge, Layers, Zap } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import SectionHeader from "@/components/SectionHeader";
 import { useLang } from "@/i18n/LangContext";
@@ -63,21 +63,7 @@ const About = () => {
                 })}
               </div>
 
-              {/* فلسفة العمل */}
-              <div className="mt-12 pt-8 border-t border-border text-center">
-                <p className="text-muted-foreground mb-5">{t.about.philosophyLead}</p>
-                <div className="flex flex-wrap justify-center gap-3">
-                  {t.about.principles.map((rule) => (
-                    <span
-                      key={rule}
-                      className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-5 py-2 font-semibold text-accent"
-                    >
-                      <CheckCircle2 className="w-4 h-4" />
-                      {rule}
-                    </span>
-                  ))}
-                </div>
-              </div>
+
             </div>
           </Reveal>
         </div>

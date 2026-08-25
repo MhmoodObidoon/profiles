@@ -49,9 +49,6 @@ const Experience = () => {
                             </p>
                           </div>
                         </div>
-                        <span className="text-sm font-semibold text-accent bg-accent/10 px-4 py-1.5 rounded-full w-fit shrink-0">
-                          {exp.type}
-                        </span>
                       </header>
 
                       <ul className="space-y-5">
