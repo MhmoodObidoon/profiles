@@ -8,7 +8,7 @@ interface PipelineStep {
   labelEn: string;
   subAr: string;
   subEn: string;
-  icon: any;
+  icon: React.ElementType;
   logAr: string;
   logEn: string;
 }
