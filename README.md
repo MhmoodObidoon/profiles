@@ -1,4 +1,4 @@
-# 🚀 Mahmoud Ahmed Obaidon — DevOps & Cloud Engineering Portfolio
+# Mahmoud Ahmed Obaidon — DevOps & Cloud Engineering Portfolio
 
 [![CI/CD Pipeline](https://github.com/Eng-m-devops/Portfolio/actions/workflows/deploy.yml/badge.svg)](https://github.com/Eng-m-devops/Portfolio/actions/workflows/deploy.yml)
 [![Live Portfolio](https://img.shields.io/badge/Live_Site-GitHub_Pages-00d2ff?style=flat&logo=github)](https://Eng-m-devops.github.io/Portfolio/)
@@ -9,29 +9,29 @@
 
 ---
 
-## 🌟 الميزات الرئيسية (Key Features)
+## الميزات الرئيسية (Key Features)
 
-- **🖥️ محاكي الأوامر التفاعلي (Interactive TTY Shell):** إمكانية تجربة أوامر TTY مباشرة من الصفحة وتفحص حالة النظام والمشاريع بشكل تفاعلي حي.
-- **🌐 دعم ثنائي اللغة (Bilingual Support AR/EN):** نظام ترجمة فوري كامل (i18n) بين اللغة العربية والإنجليزية مع مراعاة اتجاهات النص (RTL/LTR).
-- **🌗 المظهر الداكن والفيزيائي (Dark & Light Theme):** تبديل سلس بين المظهر المظلم العصري الفخم والمظهر المضيء.
+- ** محاكي الأوامر التفاعلي (Interactive TTY Shell):** إمكانية تجربة أوامر TTY مباشرة من الصفحة وتفحص حالة النظام والمشاريع بشكل تفاعلي حي.
+- ** دعم ثنائي اللغة (Bilingual Support AR/EN):** نظام ترجمة فوري كامل (i18n) بين اللغة العربية والإنجليزية مع مراعاة اتجاهات النص (RTL/LTR).
+- **المظهر الداكن والفيزيائي (Dark & Light Theme):** تبديل سلس بين المظهر المظلم العصري الفخم والمظهر المضيء.
 - **⚡ أداء فائق وتصميم متجاوب:** سرعة استجابة عالية مع توافق كامل مع كافة الشاشات والأجهزة اللوحية والمحمول.
-- **🛠️ موثوقية الأكواد والأدلة:** ربط المشاريع بمستودعاتها الحقيقية على GitHub، وإرفاق المخططات المعمارية وخطوات التحقق والنتائج المقاسة لكل مشروع.
-- **📄 تحميل السيرة الذاتية PDF:** رابط مباشر وديناميكي متوافق مع كافة مسارات GitHub Pages لتنزيل النسخة المحدثة من CV.
+- ** موثوقية الأكواد والأدلة:** ربط المشاريع بمستودعاتها الحقيقية على GitHub، وإرفاق المخططات المعمارية وخطوات التحقق والنتائج المقاسة لكل مشروع.
+- ** تحميل السيرة الذاتية PDF:** رابط مباشر وديناميكي متوافق مع كافة مسارات GitHub Pages لتنزيل النسخة المحدثة من CV.
 
 ---
 
-## 🏗️ الترسانة التقنية (Tech Stack)
+## الترسانة التقنية (Tech Stack)
 
-| فئة التقنية | التقنيات المستخدمة |
-| :--- | :--- |
-| **Front-end & Core** | React 18, TypeScript, Vite 5, React Router v6 |
-| **Styling & UI** | Tailwind CSS v3, Lucide React Icons, Radix UI |
-| **CI/CD & Hosting** | GitHub Actions Workflow, GitHub Pages Deployment |
-| **Quality & Linting** | ESLint 9, TypeScript Typechecking (`tsc`) |
+| فئة التقنية           | التقنيات المستخدمة                               |
+| :-------------------- | :----------------------------------------------- |
+| **Front-end & Core**  | React 18, TypeScript, Vite 5, React Router v6    |
+| **Styling & UI**      | Tailwind CSS v3, Lucide React Icons, Radix UI    |
+| **CI/CD & Hosting**   | GitHub Actions Workflow, GitHub Pages Deployment |
+| **Quality & Linting** | ESLint 9, TypeScript Typechecking (`tsc`)        |
 
 ---
 
-## 🔄 خط النشر والتشغيل الآلي (CI/CD Pipeline Workflow)
+## خط النشر والتشغيل الآلي (CI/CD Pipeline Workflow)
 
 يحتوي المستودع على خط نشر مؤتمت بالكامل عبر **GitHub Actions** (`.github/workflows/deploy.yml`) يعمل على إجراء الخطوات التالية عند كل تدقيق أو سحب (Push / Pull Request) لفرع `main`:
 
@@ -51,9 +51,10 @@ graph TD
 
 ---
 
-## 🛠️ التشغيل المحلي والتطوير (Local Setup & Development)
+## التشغيل المحلي والتطوير (Local Setup & Development)
 
 ### المتطلبات الأساسية
+
 - Node.js (الإصدار 18 أو أحدث)
 - npm أو bun أو yarn
 
@@ -88,7 +89,7 @@ npm run preview
 
 ---
 
-## 👤 معلومات التواصل والروابط الرسمية (Contact & Profiles)
+## معلومات التواصل والروابط الرسمية (Contact & Profiles)
 
 - **الاسم:** محمود أحمد عبيدون (Mahmoud Ahmed Obaidon)
 - **المسمى الوظيفي:** مهندس DevOps وحوسبة سحابية (DevOps & Cloud Infrastructure Engineer)
