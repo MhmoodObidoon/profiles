@@ -9,7 +9,7 @@ const EMAIL = "mhmoodobidoon@gmail.com";
 
 const Contact = () => {
   const { t } = useLang();
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "fallback" | "error">("idle");
   const [copied, setCopied] = useState(false);
 
   const handleCopyEmail = () => {
@@ -39,7 +39,7 @@ const Contact = () => {
       window.location.href = mailtoUrl;
       
       // Update UI status cleanly
-      setStatus("sent");
+      setStatus("fallback");
       return;
     }
 
@@ -187,6 +187,11 @@ const Contact = () => {
                   )}
                 </button>
 
+                {status === "fallback" && (
+                  <p role="status" className="text-center text-amber-500 font-bold text-sm pt-2">
+                    {t.contact.form.emailFallback}
+                  </p>
+                )}
                 {status === "sent" && (
                   <p role="status" className="text-center text-emerald-500 font-bold text-sm pt-2">
                     {t.contact.form.sentNote}
