@@ -1,96 +1,54 @@
-import { useState, useEffect } from "react";
-import { Cpu, HardDrive, ShieldCheck, Activity, Server, Radio } from "lucide-react";
+import { Activity, Cpu, HardDrive, Radio, Server, ShieldCheck } from "lucide-react";
 import { useLang } from "@/i18n/LangContext";
 
 const SystemHealthWidget = () => {
   const { lang } = useLang();
-  const [cpuVal, setCpuVal] = useState<number>(14);
-  const [ramVal, setRamVal] = useState<number>(3.4);
+  const isArabic = lang === "ar";
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      // Simulate micro fluctuations in live server telemetry
-      setCpuVal(Number((12 + Math.random() * 6).toFixed(1)));
-      setRamVal(Number((3.2 + Math.random() * 0.4).toFixed(2)));
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
+  const metrics = [
+    { label: "CPU", value: "Demo", icon: Cpu, tone: "text-cyan-400" },
+    { label: isArabic ? "الذاكرة" : "Memory", value: "Demo", icon: HardDrive, tone: "text-amber-400" },
+    { label: isArabic ? "الحاويات" : "Containers", value: "Example", icon: Server, tone: "text-emerald-400" },
+    { label: isArabic ? "الأمان" : "Security", value: "Example", icon: ShieldCheck, tone: "text-primary" },
+  ];
 
   return (
-    <div className="w-full max-w-4xl mx-auto rounded-3xl border border-border/80 bg-card/80 backdrop-blur-xl p-6 md:p-7 shadow-xl hover:border-primary/50 transition-all duration-300 dir-ltr text-start">
-      <div className="flex items-center justify-between border-b border-border/70 pb-4 mb-6">
+    <section
+      aria-label={isArabic ? "لوحة توضيحية لمؤشرات النظام" : "Illustrative system metrics"}
+      className="w-full max-w-4xl mx-auto rounded-3xl border border-border/80 bg-card/80 backdrop-blur-xl p-6 md:p-7 shadow-xl"
+    >
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-border/70 pb-4 mb-6">
         <div className="flex items-center gap-2.5">
-          <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-500">
-            <Radio className="w-5 h-5 animate-pulse" />
+          <div className="p-2 rounded-xl bg-primary/10 text-primary">
+            <Activity className="w-5 h-5" />
           </div>
           <div>
             <h4 className="font-extrabold text-foreground text-base tracking-tight">
-              {lang === "ar" ? "لوحة مراقبة الخوادم الحية (Live Telemetry)" : "Live Telemetry & Infrastructure Health"}
+              {isArabic ? "معاينة توضيحية لمؤشرات البنية التحتية" : "Infrastructure Metrics Preview"}
             </h4>
-            <p className="text-xs text-muted-foreground font-mono">AWS EC2 • Docker Swarm • K8s Cluster</p>
+            <p className="text-xs text-muted-foreground">
+              {isArabic ? "بيانات تجريبية للعرض — غير متصلة بخادم فعلي" : "Sample display only — not connected to a live server"}
+            </p>
           </div>
         </div>
-
-        <span className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-emerald-500 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
-          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-          99.99% Uptime
+        <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-500 bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">
+          <Radio className="w-3.5 h-3.5" />
+          {isArabic ? "محاكاة" : "Demo"}
         </span>
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-        {/* Metric 1: CPU */}
-        <div className="p-4 rounded-2xl bg-background/60 border border-border/60 space-y-2">
-          <div className="flex items-center justify-between text-muted-foreground text-xs font-mono">
-            <span className="flex items-center gap-1.5">
-              <Cpu className="w-3.5 h-3.5 text-cyan-400" /> CPU Load
-            </span>
-            <span className="text-cyan-400 font-bold">{cpuVal}%</span>
+        {metrics.map(({ label, value, icon: Icon, tone }) => (
+          <div key={label} className="p-4 rounded-2xl bg-background/60 border border-border/60 space-y-3">
+            <div className="flex items-center justify-between gap-2 text-muted-foreground text-xs">
+              <span>{label}</span>
+              <Icon className={`w-4 h-4 ${tone}`} />
+            </div>
+            <p className={`text-lg font-extrabold ${tone}`}>{value}</p>
           </div>
-          {/* Animated Sparkline Graphic */}
-          <div className="h-6 w-full flex items-end gap-1">
-            {[40, 55, 30, 65, 45, 60, 50, 75, 40, 55, 60, 45].map((val, idx) => (
-              <div
-                key={idx}
-                className="flex-1 bg-cyan-500/40 hover:bg-cyan-400 rounded-t transition-all duration-300"
-                style={{ height: `${(val * (cpuVal / 15)).toFixed(0)}%` }}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Metric 2: RAM */}
-        <div className="p-4 rounded-2xl bg-background/60 border border-border/60 space-y-2">
-          <div className="flex items-center justify-between text-muted-foreground text-xs font-mono">
-            <span className="flex items-center gap-1.5">
-              <HardDrive className="w-3.5 h-3.5 text-amber-400" /> RAM Memory
-            </span>
-            <span className="text-amber-400 font-bold">{ramVal} GB</span>
-          </div>
-          <div className="h-2 w-full bg-secondary rounded-full overflow-hidden mt-3">
-            <div className="h-full bg-amber-500 rounded-full transition-all duration-500" style={{ width: "22%" }} />
-          </div>
-          <p className="text-[11px] font-mono text-muted-foreground">3.4 GB / 16 GB (21% Used)</p>
-        </div>
-
-        {/* Metric 3: Containers */}
-        <div className="p-4 rounded-2xl bg-background/60 border border-border/60 space-y-1">
-          <div className="flex items-center gap-1.5 text-muted-foreground text-xs font-mono">
-            <Server className="w-3.5 h-3.5 text-emerald-400" /> Docker Microservices
-          </div>
-          <p className="text-xl font-mono font-extrabold text-emerald-400">14 / 14</p>
-          <p className="text-[11px] font-mono text-emerald-500 font-bold">● All Pods Healthy</p>
-        </div>
-
-        {/* Metric 4: Security */}
-        <div className="p-4 rounded-2xl bg-background/60 border border-border/60 space-y-1">
-          <div className="flex items-center gap-1.5 text-muted-foreground text-xs font-mono">
-            <ShieldCheck className="w-3.5 h-3.5 text-primary" /> Security & SSL
-          </div>
-          <p className="text-sm font-mono font-bold text-foreground pt-1">TLS 1.3 Hardened</p>
-          <p className="text-[11px] font-mono text-primary font-bold">🔒 pfSense Firewall</p>
-        </div>
+        ))}
       </div>
-    </div>
+    </section>
   );
 };
 
