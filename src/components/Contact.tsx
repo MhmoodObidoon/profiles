@@ -4,7 +4,7 @@ import Reveal from "@/components/Reveal";
 import SectionHeader from "@/components/SectionHeader";
 import { useLang } from "@/i18n/LangContext";
 
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT || "https://formspree.io/f/YOUR_FORM_ID";
 const EMAIL = "mhmoodobidoon@gmail.com";
 
 const Contact = () => {
@@ -21,24 +21,32 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
+    const formData = new FormData(form);
+    const name = (formData.get("name") as string) || "";
+    const senderEmail = (formData.get("email") as string) || "";
+    const message = (formData.get("message") as string) || "";
+
     setStatus("sending");
 
     if (FORMSPREE_ENDPOINT.includes("YOUR_FORM_ID")) {
-      // Fallback behavior when Formspree endpoint is not set up
-      setTimeout(() => {
-        setStatus("sent");
-        form.reset();
-        window.location.href = `mailto:${EMAIL}?subject=Contact%20From%20Portfolio&body=${encodeURIComponent(
-          (form.elements.namedItem("message") as HTMLTextAreaElement)?.value || ""
-        )}`;
-      }, 700);
+      // Fallback behavior: trigger mailto client directly with prefilled user data
+      const subject = encodeURIComponent(`Portfolio Inquiry from ${name || 'Visitor'}`);
+      const body = encodeURIComponent(`Name: ${name}\nEmail: ${senderEmail}\n\nMessage:\n${message}`);
+      
+      const mailtoUrl = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
+      
+      // Open mailto link
+      window.location.href = mailtoUrl;
+      
+      // Update UI status cleanly
+      setStatus("sent");
       return;
     }
 
     try {
       const res = await fetch(FORMSPREE_ENDPOINT, {
         method: "POST",
-        body: new FormData(form),
+        body: formData,
         headers: { Accept: "application/json" },
       });
       if (res.ok) {

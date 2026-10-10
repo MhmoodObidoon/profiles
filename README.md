@@ -1,73 +1,103 @@
-# Welcome to your Lovable project
+# 🚀 Mahmoud Ahmed Obaidon — DevOps & Cloud Engineering Portfolio
 
-## Project info
+[![CI/CD Pipeline](https://github.com/Eng-m-devops/Portfolio/actions/workflows/deploy.yml/badge.svg)](https://github.com/Eng-m-devops/Portfolio/actions/workflows/deploy.yml)
+[![Live Portfolio](https://img.shields.io/badge/Live_Site-GitHub_Pages-00d2ff?style=flat&logo=github)](https://Eng-m-devops.github.io/Portfolio/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-emerald.svg)](LICENSE)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Mahmoud_Obaidon-0077B5?style=flat&logo=linkedin)](https://www.linkedin.com/in/mahmoodobidoon)
 
-**URL**: https://lovable.dev/projects/1182bd83-c8b0-4148-b037-4a16237c688d
+معرض الأعمال والخبرات المهنية الخاص بـ **محمود أحمد عبيدون** — مهندس DevOps وحوسبة سحابية. تم تصميم وبناء هذا المعرض باستخدام أحدث التقنيات لتقديم تجربة تفاعلية سريعة، متجاوبة، ومبنية على مبادئ الهندسة السحابية الحديثة والتكامل المستمر (CI/CD).
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## 🌟 الميزات الرئيسية (Key Features)
 
-**Use Lovable**
+- **🖥️ محاكي الأوامر التفاعلي (Interactive TTY Shell):** إمكانية تجربة أوامر TTY مباشرة من الصفحة وتفحص حالة النظام والمشاريع بشكل تفاعلي حي.
+- **🌐 دعم ثنائي اللغة (Bilingual Support AR/EN):** نظام ترجمة فوري كامل (i18n) بين اللغة العربية والإنجليزية مع مراعاة اتجاهات النص (RTL/LTR).
+- **🌗 المظهر الداكن والفيزيائي (Dark & Light Theme):** تبديل سلس بين المظهر المظلم العصري الفخم والمظهر المضيء.
+- **⚡ أداء فائق وتصميم متجاوب:** سرعة استجابة عالية مع توافق كامل مع كافة الشاشات والأجهزة اللوحية والمحمول.
+- **🛠️ موثوقية الأكواد والأدلة:** ربط المشاريع بمستودعاتها الحقيقية على GitHub، وإرفاق المخططات المعمارية وخطوات التحقق والنتائج المقاسة لكل مشروع.
+- **📄 تحميل السيرة الذاتية PDF:** رابط مباشر وديناميكي متوافق مع كافة مسارات GitHub Pages لتنزيل النسخة المحدثة من CV.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/1182bd83-c8b0-4148-b037-4a16237c688d) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🏗️ الترسانة التقنية (Tech Stack)
 
-**Use your preferred IDE**
+| فئة التقنية | التقنيات المستخدمة |
+| :--- | :--- |
+| **Front-end & Core** | React 18, TypeScript, Vite 5, React Router v6 |
+| **Styling & UI** | Tailwind CSS v3, Lucide React Icons, Radix UI |
+| **CI/CD & Hosting** | GitHub Actions Workflow, GitHub Pages Deployment |
+| **Quality & Linting** | ESLint 9, TypeScript Typechecking (`tsc`) |
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 🔄 خط النشر والتشغيل الآلي (CI/CD Pipeline Workflow)
 
-Follow these steps:
+يحتوي المستودع على خط نشر مؤتمت بالكامل عبر **GitHub Actions** (`.github/workflows/deploy.yml`) يعمل على إجراء الخطوات التالية عند كل تدقيق أو سحب (Push / Pull Request) لفرع `main`:
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+```mermaid
+graph TD
+    A[Git Push to main] --> B[Run Automated Tests & Typecheck]
+    B --> C[Run ESLint Analysis]
+    C --> D[Vite Production Build]
+    D --> E[Upload GitHub Pages Artifact]
+    E --> F[Deploy to GitHub Pages Live Domain]
+```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+1. **التحقق من الأنواع (Typecheck):** التأكد من خلو المشروع من أخطاء TypeScript.
+2. **فحص جودة الكود (Linting):** فحص التنسيق والمعايير القياسية عبر ESLint.
+3. **التجميع للإنتاج (Vite Build):** تجميع الأصول والملفات الثابتة إلى مجلد `dist/`.
+4. **النشر التلقائي (Automated Deployment):** رفع حزمة الموقع ونشرها مباشرة على GitHub Pages.
 
-# Step 3: Install the necessary dependencies.
-npm i
+---
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+## 🛠️ التشغيل المحلي والتطوير (Local Setup & Development)
+
+### المتطلبات الأساسية
+- Node.js (الإصدار 18 أو أحدث)
+- npm أو bun أو yarn
+
+### خطوات التشغيل:
+
+```bash
+# 1. استنساخ المستودع
+git clone https://github.com/Eng-m-devops/Portfolio.git
+cd Portfolio
+
+# 2. تثبيت الحزم والاعتماديات
+npm install
+
+# 3. تشغيل سيرفر التطوير المحلي
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+سيتم فتح سيرفر التطوير التفاعلي على الرابط: `http://localhost:8080`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### أوامر البناء والفحص:
 
-**Use GitHub Codespaces**
+```bash
+# تجميع حزمة الإنتاج
+npm run build
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+# فحص جودة الكود عبر ESLint
+npm run lint
 
-## What technologies are used for this project?
+# معاينة حزمة الإنتاج محلياً
+npm run preview
+```
 
-This project is built with:
+---
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 👤 معلومات التواصل والروابط الرسمية (Contact & Profiles)
 
-## How can I deploy this project?
+- **الاسم:** محمود أحمد عبيدون (Mahmoud Ahmed Obaidon)
+- **المسمى الوظيفي:** مهندس DevOps وحوسبة سحابية (DevOps & Cloud Infrastructure Engineer)
+- **الموقع الجغرافي:** تريم، حضرموت — اليمن
+- **البريد الإلكتروني:** [mhmoodobidoon@gmail.com](mailto:mhmoodobidoon@gmail.com)
+- **رابط LinkedIn:** [linkedin.com/in/mahmoodobidoon](https://www.linkedin.com/in/mahmoodobidoon)
+- **حساب GitHub:** [github.com/Eng-m-devops](https://github.com/Eng-m-devops)
+- **الهاتف / الواتساب:** [+967 772 944 392](https://wa.me/967772944392)
 
-Simply open [Lovable](https://lovable.dev/projects/1182bd83-c8b0-4148-b037-4a16237c688d) and click on Share -> Publish.
+---
 
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+&copy; 2026 محمود أحمد عبيدون. جميع الحقوق محفوظة.

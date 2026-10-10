@@ -19,13 +19,18 @@ const techStack = [
 
 const socials = [
   { icon: Github, href: "https://github.com/Eng-m-devops", key: "github" },
-  { icon: Linkedin, href: "https://www.linkedin.com/", key: "linkedin" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/mahmoodobidoon", key: "linkedin" },
   { icon: Instagram, href: "https://www.instagram.com/mahmoud.it.dev/", key: "instagram" },
   { icon: Mail, href: "mailto:mhmoodobidoon@gmail.com", key: "email" },
 ];
 
 const Hero = () => {
   const { t } = useLang();
+
+  const baseUrl = import.meta.env.BASE_URL.endsWith("/")
+    ? import.meta.env.BASE_URL
+    : `${import.meta.env.BASE_URL}/`;
+  const cvUrl = `${baseUrl}cv.pdf`;
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -87,7 +92,7 @@ const Hero = () => {
                   asChild
                   className="border-2 border-primary/70 bg-primary/5 hover:bg-primary/15 hover:border-primary font-bold text-primary px-7 py-6 text-base transition-all"
                 >
-                  <a href="/cv.pdf" download>
+                  <a href={cvUrl} download="Mahmoud_Obaidon_DevOps_CV.pdf">
                     <Download className="w-4 h-4 me-2" />
                     {t.hero.cvBtn}
                   </a>
