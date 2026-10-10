@@ -21,8 +21,8 @@ const pipelineSteps: PipelineStep[] = [
     subAr: "push to main branch",
     subEn: "push to main branch",
     icon: GitCommit,
-    logAr: "🚀 [1/5] تم استلام التعديلات في المستودع Git Push: commit #d9a4f2...",
-    logEn: "🚀 [1/5] Git commit received: commit #d9a4f2...",
+    logAr: "🧪 [1/5] محاكاة فقط: مثال على استلام commit — لا يتم فحص مستودع فعلي.",
+    logEn: "🧪 [1/5] Demo only: example commit received; no repository is checked.",
   },
   {
     id: 2,
@@ -31,8 +31,8 @@ const pipelineSteps: PipelineStep[] = [
     subAr: "linting & unit tests",
     subEn: "linting & unit tests",
     icon: CheckCircle2,
-    logAr: "🧪 [2/5] جاري تشغيل الفحص الآلي... جميع الاختبارات نجحت 100% (Passed)",
-    logEn: "🧪 [2/5] Running automated tests... All 48 unit tests passed (100%)",
+    logAr: "🧪 [2/5] محاكاة فقط: مثال لخطوة lint والاختبارات — لا تُشغّل اختبارات فعلية.",
+    logEn: "🧪 [2/5] Demo only: example lint/test step; no tests are executed.",
   },
   {
     id: 3,
@@ -41,8 +41,8 @@ const pipelineSteps: PipelineStep[] = [
     subAr: "multi-stage build",
     subEn: "multi-stage build",
     icon: Package,
-    logAr: "📦 [3/5] بناء الصورة الرقمية mahmoud/app:v2.4 ونشرها في Docker Registry...",
-    logEn: "📦 [3/5] Building container image mahmoud/app:v2.4 & pushing to registry...",
+    logAr: "🧪 [3/5] محاكاة فقط: مثال لخطوة بناء صورة Docker — لا تُبنى صورة فعلية.",
+    logEn: "🧪 [3/5] Demo only: example Docker image build; no image is built or pushed.",
   },
   {
     id: 4,
@@ -51,8 +51,8 @@ const pipelineSteps: PipelineStep[] = [
     subAr: "AWS EC2 rolling update",
     subEn: "AWS EC2 rolling update",
     icon: Server,
-    logAr: "☁️ [4/5] نشر تحديث بدون توقف (Zero Downtime) على خوادم AWS Kubernetes...",
-    logEn: "☁️ [4/5] Zero-downtime rolling update deployed to AWS Kubernetes pods...",
+    logAr: "🧪 [4/5] محاكاة فقط: مثال لخطوة النشر — لا يتم الاتصال بـ AWS أو Kubernetes.",
+    logEn: "🧪 [4/5] Demo only: example deployment step; AWS and Kubernetes are not contacted.",
   },
   {
     id: 5,
@@ -61,8 +61,8 @@ const pipelineSteps: PipelineStep[] = [
     subAr: "Prometheus & Grafana",
     subEn: "Prometheus & Grafana",
     icon: Activity,
-    logAr: "🟢 [5/5] تفعيل التنبيهات المباشرة! استقرار الخدمة 99.99% - Status: HEALTHY",
-    logEn: "🟢 [5/5] Live telemetry active! Prometheus healthy, Uptime: 99.99%",
+    logAr: "🧪 [5/5] محاكاة فقط: مثال على خطوة المراقبة — لا توجد مقاييس مباشرة.",
+    logEn: "🧪 [5/5] Demo only: example monitoring step; no live metrics or uptime are measured.",
   },
 ];
 
@@ -113,7 +113,7 @@ const PipelineVisualizer = () => {
             <span>{lang === "ar" ? "محاكي خط النشر الآلي CI/CD" : "Interactive CI/CD Pipeline Visualizer"}</span>
           </div>
           <h3 className="text-xl md:text-2xl font-extrabold text-foreground tracking-tight">
-            {lang === "ar" ? "شاهد كيف يتم نشر التطبيق آلياً بدون خطأ بشري" : "Watch Automated Cloud Deployment in Action"}
+            {lang === "ar" ? "استكشف محاكاة توضيحية لخط CI/CD" : "Explore a Simulated CI/CD Workflow"}
           </h3>
         </div>
 
@@ -126,7 +126,7 @@ const PipelineVisualizer = () => {
           {isRunning ? (
             <>
               <RefreshCw className="w-4 h-4 animate-spin text-cyan-200" />
-              <span>{lang === "ar" ? "جارٍ النشر الآلي..." : "Deploying..."}</span>
+              <span>{lang === "ar" ? "تشغيل المحاكاة..." : "Running demo..."}</span>
             </>
           ) : (
             <>
@@ -190,7 +190,7 @@ const PipelineVisualizer = () => {
         <div className="flex items-center gap-2 text-slate-400 border-b border-slate-800 pb-2 mb-2">
           <Terminal className="w-4 h-4 text-cyan-400" />
           <span className="font-sans font-semibold text-slate-300">
-            {lang === "ar" ? "سجلات خط النشر المباشر (Deployment Output):" : "Live Deployment Terminal Stream:"}
+            {lang === "ar" ? "سجل محاكاة خط النشر:" : "Simulated Pipeline Log:"}
           </span>
         </div>
 
