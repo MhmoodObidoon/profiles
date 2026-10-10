@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { useLang } from "@/i18n/LangContext";
 
@@ -15,12 +15,12 @@ const NotFound = () => {
       <div className="text-center">
         <h1 className="mb-4 text-6xl font-extrabold text-primary">{t.notFound.title}</h1>
         <p className="mb-6 text-xl text-muted-foreground">{t.notFound.message}</p>
-        <a
-          href="/"
+        <Link
+          to="/"
           className="inline-block rounded-lg border border-primary/60 bg-primary/10 px-6 py-3 font-semibold text-primary hover:bg-primary/20 transition-colors"
         >
           {t.notFound.back}
-        </a>
+        </Link>
       </div>
     </div>
   );
