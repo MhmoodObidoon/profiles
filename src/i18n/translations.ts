@@ -33,11 +33,14 @@ const ar = {
     socials: { github: "GitHub", linkedin: "LinkedIn", instagram: "انستقرام", email: "البريد الإلكتروني" },
   },
   terminal: {
-    title: "محاكي الأوامر TTY — mahmoud@devops:~",
-    hint: "اكتب الأوامر أو اضغط الأزرار السريعة أدناه لتفحص النظام بشكل حي:",
-    prompt: "mahmoud@cloud-node:~$",
+    title: "محاكي أوامر توضيحي تفاعلي — mahmoud@devops-demo:~",
+    badge: "محاكي توضيحي (Showcase Demo)",
+    note: "ملاحظة توضيحية: هذه مخرجات محاكاة تفاعلية داخل المتصفح لنماذج المشاريع الفعلية وليست اتصالاً بسيرفر إنتاجي مباشر.",
+    hint: "محاكي توضيحي داخل المتصفح لعرض المهارات وهيكلية المشاريع — اكتب الأوامر أو اضغط الأزرار السريعة:",
+    prompt: "mahmoud@devops-demo:~$",
     quickBtns: [
       { label: "status", cmd: "status" },
+      { label: "docker ps", cmd: "docker ps" },
       { label: "whoami", cmd: "whoami" },
       { label: "skills", cmd: "skills" },
       { label: "projects", cmd: "projects" },
@@ -104,7 +107,7 @@ const ar = {
         subtitle: "Networking & Security",
         items: [
           { label: "إدارة الشبكات", tools: "تصميم المخططات الشبكية، ربط الفروع، شبكات LAN/WAN" },
-          { label: "الحماية والتحكم", tools: "الجدار الناري pfSense، الربط مع Active Directory، بروتوكولات الأجهزة الحيوية (ADMS/Biometrics)" },
+          { label: "الحماية وتصليد الخوادم", tools: "جدار الحماية UFW، مصادقة SSH بالمفاتيح، تشفير SSL/TLS، وتصليد خوادم Linux" },
         ],
       },
     ],
@@ -209,7 +212,7 @@ const ar = {
         verification: "NAME                                READY   STATUS    RESTARTS   AGE\npod/web-service-6789b-x8q12         1/1     Running   0          4d\npod/web-service-6789b-f4p90         1/1     Running   0          4d\nservice/web-service-clusterip       ClusterIP   10.43.12.89   <none>     80/TCP\ningress.networking.k8s.io/web-ingress   Class: nginx   Hosts: app.local   Ports: 80, 443",
         runCommand: "kubectl apply -f k8s-manifests/ && kubectl get pods,svc,ingress -o wide",
         tags: ["Kubernetes", "Docker", "Ingress-Nginx", "Microservices", "Portainer", "YAML Manifests", "Hands-on Lab"],
-        metrics: { passRate: "All Pods Running (1/1)", buildTime: "Zero-Downtime Rollout", environment: "K8s Multi-Node Lab" },
+        metrics: { passRate: "All Pods Running (1/1)", buildTime: "Zero-Downtime Rollout", environment: "Kubernetes Cluster Lab" },
       },
       {
         id: "server-health",
@@ -347,11 +350,14 @@ const en: Translations = {
     socials: { github: "GitHub", linkedin: "LinkedIn", instagram: "Instagram", email: "Email" },
   },
   terminal: {
-    title: "Interactive TTY Shell — mahmoud@devops:~",
-    hint: "Type commands or click quick action buttons below to inspect live system info:",
-    prompt: "mahmoud@cloud-node:~$",
+    title: "Interactive Showcase CLI Simulator — mahmoud@devops-demo:~",
+    badge: "Showcase CLI Demo",
+    note: "Showcase note: Interactive browser-based simulation illustrating real project architectures, not a live production server connection.",
+    hint: "Browser-based demo simulator showcasing DevOps commands & project portfolio:",
+    prompt: "mahmoud@devops-demo:~$",
     quickBtns: [
       { label: "status", cmd: "status" },
+      { label: "docker ps", cmd: "docker ps" },
       { label: "whoami", cmd: "whoami" },
       { label: "skills", cmd: "skills" },
       { label: "projects", cmd: "projects" },
@@ -418,7 +424,7 @@ const en: Translations = {
         subtitle: "Networking & Security",
         items: [
           { label: "Network Management", tools: "Network topology design, branch connectivity, LAN/WAN setup" },
-          { label: "Protection & Control", tools: "pfSense firewall, Active Directory domain integration, biometric protocols (ADMS)" },
+          { label: "Protection & Server Hardening", tools: "UFW Firewall, SSH key authentication, SSL/TLS Encryption, Linux server hardening" },
         ],
       },
     ],
@@ -523,7 +529,7 @@ const en: Translations = {
         verification: "NAME                                READY   STATUS    RESTARTS   AGE\npod/web-service-6789b-x8q12         1/1     Running   0          4d\npod/web-service-6789b-f4p90         1/1     Running   0          4d\nservice/web-service-clusterip       ClusterIP   10.43.12.89   <none>     80/TCP\ningress.networking.k8s.io/web-ingress   Class: nginx   Hosts: app.local   Ports: 80, 443",
         runCommand: "kubectl apply -f k8s-manifests/ && kubectl get pods,svc,ingress -o wide",
         tags: ["Kubernetes", "Docker", "Ingress-Nginx", "Microservices", "Portainer", "YAML Manifests", "Hands-on Lab"],
-        metrics: { passRate: "All Pods Running (1/1)", buildTime: "Zero-Downtime Rollout", environment: "K8s Multi-Node Lab" },
+        metrics: { passRate: "All Pods Running (1/1)", buildTime: "Zero-Downtime Rollout", environment: "Kubernetes Cluster Lab" },
       },
       {
         id: "server-health",

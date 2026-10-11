@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Terminal as TerminalIcon, CornerDownLeft, Sparkles } from "lucide-react";
+import { Terminal as TerminalIcon, CornerDownLeft, Sparkles, Info } from "lucide-react";
 import { useLang } from "@/i18n/LangContext";
 
 interface CommandLog {
@@ -11,22 +11,30 @@ interface CommandLog {
 const DevOpsTerminal = () => {
   const { t, lang } = useLang();
   const [input, setInput] = useState("");
-  const [history, setHistory] = useState<CommandLog[]>([
-    {
-      id: "welcome-1",
-      type: "output",
-      content: (
-        <div className="space-y-1 text-xs md:text-sm">
-          <p className="text-cyan-400 font-semibold">
-            🚀 Welcome to Mahmoud Obaidon's DevOps Interactive Terminal v2.4
-          </p>
-          <p className="text-muted-foreground">{t.terminal.hint}</p>
-        </div>
-      ),
-    },
-  ]);
+  const [history, setHistory] = useState<CommandLog[]>([]);
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // Initialize and update welcome banner on language change
+  useEffect(() => {
+    setHistory([
+      {
+        id: "welcome-1",
+        type: "output",
+        content: (
+          <div className="space-y-1.5 text-xs md:text-sm">
+            <p className="text-cyan-400 font-semibold">
+              🚀 {t.terminal.title}
+            </p>
+            <div className="text-amber-300/95 bg-amber-500/10 border border-amber-500/20 px-3 py-1.5 rounded-lg text-xs font-sans leading-relaxed">
+              {t.terminal.note}
+            </div>
+            <p className="text-muted-foreground text-xs font-sans">{t.terminal.hint}</p>
+          </div>
+        ),
+      },
+    ]);
+  }, [lang, t]);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -42,7 +50,18 @@ const DevOpsTerminal = () => {
     ];
 
     if (trimmed === "clear") {
-      setHistory([]);
+      setHistory([
+        {
+          id: `welcome-${Date.now()}`,
+          type: "output",
+          content: (
+            <div className="space-y-1 text-xs md:text-sm">
+              <p className="text-cyan-400 font-semibold">🚀 {t.terminal.title}</p>
+              <p className="text-muted-foreground text-xs font-sans">{t.terminal.hint}</p>
+            </div>
+          ),
+        },
+      ]);
       setInput("");
       return;
     }
@@ -54,18 +73,54 @@ const DevOpsTerminal = () => {
       case "system":
         outputNode = (
           <div className="space-y-1.5 text-xs md:text-sm border-s-2 border-emerald-500/80 ps-3 my-1">
-            <p className="text-emerald-400 font-bold">🟢 SYSTEM STATUS: HEALTHY & OPERATIONAL</p>
-            <p className="text-slate-300">
-              • Infrastructure: <span className="text-cyan-300 font-mono">AWS EC2 Multi-Region</span>
+            <p className="text-emerald-400 font-bold font-mono">
+              🟢 ARCHITECTURE STATUS: VERIFIED LAB &amp; CLIENT CONFIGS
             </p>
             <p className="text-slate-300">
-              • Containers: <span className="text-cyan-300 font-mono">Docker & K8s Active</span>
+              • Target OS: <span className="text-cyan-300 font-mono">Ubuntu Linux 22.04 LTS (x86_64 VPS)</span>
             </p>
             <p className="text-slate-300">
-              • Monitoring: <span className="text-cyan-300 font-mono">Prometheus & Grafana (99.9% Uptime)</span>
+              • Reverse Proxy: <span className="text-cyan-300 font-mono">Nginx 1.24 (Reverse Proxy, SSL/TLS Let's Encrypt)</span>
             </p>
             <p className="text-slate-300">
-              • Firewalls: <span className="text-amber-300 font-mono">pfSense SSL/TLS Hardened</span>
+              • Container Runtime: <span className="text-cyan-300 font-mono">Docker 26.x &amp; Docker Compose v2</span>
+            </p>
+            <p className="text-slate-300">
+              • Active Stack: <span className="text-cyan-300 font-mono">Django + Gunicorn + PostgreSQL 16 (Multi-container)</span>
+            </p>
+            <p className="text-slate-300">
+              • Security &amp; Access: <span className="text-emerald-300 font-mono">UFW Active (Ports 80/443, SSH Key-Only Auth)</span>
+            </p>
+            <p className="text-slate-300">
+              • CI/CD Pipeline: <span className="text-cyan-300 font-mono">GitHub Actions (Lint, Trivy Vuln Scan, Docker Push)</span>
+            </p>
+            <p className="text-slate-300">
+              • Orchestration Lab: <span className="text-amber-300 font-mono">Kubernetes (ClusterIP, Ingress-Nginx, PersistentVolumes)</span>
+            </p>
+            <p className="text-slate-300">
+              • Observability: <span className="text-cyan-300 font-mono">Prometheus Exporter + Grafana Dashboard (Health Alerts)</span>
+            </p>
+            <p className="text-[11px] text-slate-400 italic pt-1 font-sans">
+              ℹ️ {lang === "ar" ? "بيانات توضيحية مستمدة من التكوينات والمشاريع الفعلية المنفذة محلياً وللعملاء." : "Demo outputs reflecting actual project and client architectures implemented by Mahmoud."}
+            </p>
+          </div>
+        );
+        break;
+
+      case "docker ps":
+      case "docker":
+      case "ps":
+        outputNode = (
+          <div className="space-y-1.5 text-xs md:text-sm my-1 overflow-x-auto">
+            <p className="text-cyan-400 font-bold font-mono">CONTAINER ID   IMAGE                 COMMAND                  STATUS         PORTS</p>
+            <div className="font-mono text-slate-300 space-y-0.5 text-xs whitespace-pre">
+              <p>7f8a91b2c3d4   nginx:alpine          "/docker-entrypoint…"    Up 3 days      0.0.0.0:80-&gt;80/tcp, 0.0.0.0:443-&gt;443/tcp (django-proxy)</p>
+              <p>a1b2c3d4e5f6   django-app:production "gunicorn core.wsgi…"    Up 3 days      0.0.0.0:8000-&gt;8000/tcp (django-backend)</p>
+              <p>e5f6a1b2c3d4   postgres:16-alpine    "docker-entrypoint.s…"   Up 3 days      5432/tcp (postgres-db)</p>
+              <p>3c4d5e6f7a8b   prom/node-exporter    "/bin/node_exporter"     Up 3 days      9100/tcp (node-exporter)</p>
+            </div>
+            <p className="text-[11px] text-slate-400 italic pt-1 font-sans">
+              ℹ️ {lang === "ar" ? "محاكاة طبولوجيا الحاويات من مشروع تشغيل Django و PostgreSQL و Nginx الفعلي." : "Simulated container topology based on the actual Django, PostgreSQL, and Nginx setup."}
             </p>
           </div>
         );
@@ -77,7 +132,7 @@ const DevOpsTerminal = () => {
           <div className="text-xs md:text-sm text-slate-200 space-y-1 my-1">
             <p className="font-bold text-amber-400">👤 {t.hero.name}</p>
             <p className="text-slate-300">{t.hero.role}</p>
-            <p className="text-muted-foreground text-xs">{t.about.introPost}</p>
+            <p className="text-muted-foreground text-xs font-sans">{t.about.introPost}</p>
           </div>
         );
         break;
@@ -85,16 +140,19 @@ const DevOpsTerminal = () => {
       case "skills":
       case "stack":
         outputNode = (
-          <div className="text-xs md:text-sm text-cyan-300 my-1 space-y-1">
-            <p className="font-bold text-amber-300">⚡ TECH STACK & TOOLS:</p>
+          <div className="text-xs md:text-sm text-cyan-300 my-1 space-y-1.5">
+            <p className="font-bold text-amber-300">⚡ APPLIED TECH STACK &amp; TOOLS:</p>
             <p className="text-slate-200">
-              • DevOps: <span className="text-emerald-300">Docker, Kubernetes, GitHub Actions, Jenkins, Terraform, Ansible</span>
+              • CI/CD &amp; Containers: <span className="text-emerald-300">Docker, Docker Compose, Kubernetes, GitHub Actions, Jenkins</span>
             </p>
             <p className="text-slate-200">
-              • Cloud & Web: <span className="text-emerald-300">AWS EC2, S3, Nginx, Cloudflare, Linux (Ubuntu/Debian)</span>
+              • Infrastructure &amp; Linux: <span className="text-emerald-300">Ubuntu/Debian, Nginx, Systemd, UFW Firewall, SSL/TLS (Certbot)</span>
             </p>
             <p className="text-slate-200">
-              • Observability: <span className="text-emerald-300">Prometheus, Grafana, ELK Stack</span>
+              • Cloud &amp; IaC: <span className="text-emerald-300">AWS (EC2, S3, IAM, VPC), Terraform, Cloudflare DNS</span>
+            </p>
+            <p className="text-slate-200">
+              • Scripting &amp; Metrics: <span className="text-emerald-300">Python, Bash, Prometheus, Grafana, Node Exporter</span>
             </p>
           </div>
         );
@@ -102,12 +160,17 @@ const DevOpsTerminal = () => {
 
       case "projects":
         outputNode = (
-          <div className="text-xs md:text-sm my-1 space-y-1 text-slate-200">
-            <p className="font-bold text-cyan-400">📦 FEATURED PROJECTS:</p>
-            <p>1. <span className="text-amber-300">Kubernetes & Docker Cluster:</span> Multi-node deployment on AWS.</p>
-            <p>2. <span className="text-amber-300">Automated CI/CD Pipeline:</span> Zero-downtime GitHub Actions workflow.</p>
-            <p>3. <span className="text-amber-300">Observability Stack:</span> Prometheus + Grafana real-time metrics.</p>
-            <p>4. <span className="text-amber-300">pfSense & AD Integration:</span> Enterprise branch firewall hardening.</p>
+          <div className="text-xs md:text-sm my-1 space-y-1.5 text-slate-200">
+            <p className="font-bold text-cyan-400">📦 VERIFIED PRACTICAL PROJECTS &amp; CLIENT WORK:</p>
+            <p>1. <span className="text-amber-300 font-semibold">Django + Docker Production:</span> Multi-container stack with Nginx reverse proxy, PostgreSQL, and SSL.</p>
+            <p>2. <span className="text-amber-300 font-semibold">RealWorld CI/CD &amp; Terraform:</span> GitHub Actions pipeline with Trivy vulnerability scanning &amp; AWS IaC.</p>
+            <p>3. <span className="text-amber-300 font-semibold">HR Enterprise Client App:</span> Client deployment on Ubuntu Linux using systemd services and Nginx.</p>
+            <p>4. <span className="text-amber-300 font-semibold">Hadhramout Portal:</span> DNS records routing, Nginx virtual hosts, and SSL certificate installation.</p>
+            <p>5. <span className="text-amber-300 font-semibold">Kubernetes Microservices Lab:</span> Hands-on cluster with Ingress routing, Deployments, and PVC storage.</p>
+            <p>6. <span className="text-amber-300 font-semibold">Server Health Inspector:</span> Automated Python/Bash script monitoring CPU/RAM/Disk with Prometheus metrics.</p>
+            <p className="text-[11px] text-slate-400 pt-1 font-sans">
+              💡 {lang === "ar" ? "راجع قسم المشاريع بالأسفل للاطلاع على المخططات المعمارية وأوامر التشغيل وسجلات التحقق." : "Explore the Projects section below for architectural diagrams, run commands, and execution logs."}
+            </p>
           </div>
         );
         break;
@@ -129,7 +192,7 @@ const DevOpsTerminal = () => {
           <div className="text-xs md:text-sm text-slate-300 my-1 space-y-1">
             <p className="font-bold text-amber-400">💡 Available Commands:</p>
             <p className="font-mono text-cyan-300">
-              status | whoami | skills | projects | contact | clear | matrix
+              status | docker ps | whoami | skills | projects | contact | matrix | clear
             </p>
           </div>
         );
@@ -138,9 +201,9 @@ const DevOpsTerminal = () => {
       case "matrix":
         outputNode = (
           <div className="text-xs font-mono text-emerald-400 space-y-0.5 animate-pulse my-1">
-            <p>01000100 01000101 01010110 01001111 01010000 01010011</p>
-            <p>AWS_NODES: ONLINE | Kubelet: Active | Pods: 100% Ready</p>
-            <p>DEPLOYING AUTOMATION BLUEPRINT... SUCCESS!</p>
+            <p>01000100 01000101 01010110 01001111 01010000 01010011 (DEVOPS)</p>
+            <p>HOST: UBUNTU LINUX | DOCKER: RUNNING | NGINX: PROXY 200 OK</p>
+            <p>AUTOMATING INFRASTRUCTURE &amp; CONTINUOUS INTEGRATION... COMPLETED!</p>
           </div>
         );
         break;
@@ -182,15 +245,21 @@ const DevOpsTerminal = () => {
             {t.terminal.title}
           </span>
         </div>
-        <div className="flex items-center gap-1.5 text-[11px] text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
-          <Sparkles className="w-3 h-3" />
-          <span>DevOps TTY v2.4</span>
+        <div className="flex items-center gap-1.5 text-[11px] text-amber-300 bg-amber-500/10 px-2.5 py-0.5 rounded-full border border-amber-500/20 font-sans font-medium">
+          <Sparkles className="w-3 h-3 text-amber-400" />
+          <span>{t.terminal.badge}</span>
         </div>
+      </div>
+
+      {/* Prominent Disclaimer Strip */}
+      <div className="bg-amber-500/10 border-b border-amber-500/20 px-4 py-2 flex items-center gap-2 text-xs text-amber-300/90 font-sans">
+        <Info className="w-4 h-4 shrink-0 text-amber-400" />
+        <span className="leading-normal">{t.terminal.note}</span>
       </div>
 
       {/* Terminal content */}
       <div
-        className="p-4 md:p-6 min-h-[220px] max-h-[360px] overflow-y-auto space-y-3 font-mono text-sm leading-relaxed"
+        className="p-4 md:p-6 min-h-[220px] max-h-[380px] overflow-y-auto space-y-3 font-mono text-sm leading-relaxed"
         onClick={() => inputRef.current?.focus()}
       >
         {history.map((item) => (
@@ -215,7 +284,7 @@ const DevOpsTerminal = () => {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             className="flex-1 bg-transparent text-slate-100 outline-none border-none font-mono text-sm focus:ring-0 p-0"
-            placeholder="type 'help' or 'status'..."
+            placeholder="type 'help', 'status', 'docker ps'..."
           />
           <button type="submit" className="text-slate-500 hover:text-cyan-400 transition-colors p-1" aria-label="Run command">
             <CornerDownLeft className="w-4 h-4" />
