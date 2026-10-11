@@ -12,8 +12,9 @@ const DevOpsTerminal = () => {
   const { t, lang } = useLang();
   const [input, setInput] = useState("");
   const [history, setHistory] = useState<CommandLog[]>([]);
-  const bottomRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const isInitialMount = useRef(true);
 
   // Initialize and update welcome banner on language change
   useEffect(() => {
@@ -37,7 +38,13 @@ const DevOpsTerminal = () => {
   }, [lang, t]);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTop = scrollContainerRef.current.scrollHeight;
+    }
   }, [history]);
 
   const handleRunCommand = (cmdStr: string) => {
@@ -259,6 +266,7 @@ const DevOpsTerminal = () => {
 
       {/* Terminal content */}
       <div
+        ref={scrollContainerRef}
         className="p-4 md:p-6 min-h-[220px] max-h-[380px] overflow-y-auto space-y-3 font-mono text-sm leading-relaxed"
         onClick={() => inputRef.current?.focus()}
       >
@@ -290,7 +298,6 @@ const DevOpsTerminal = () => {
             <CornerDownLeft className="w-4 h-4" />
           </button>
         </form>
-        <div ref={bottomRef} />
       </div>
 
       {/* Quick Action Pills */}

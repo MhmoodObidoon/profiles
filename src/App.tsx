@@ -7,13 +7,20 @@ import { LangProvider } from "@/i18n/LangContext";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
+const getRouterBasename = (): string | undefined => {
+  const raw = import.meta.env.BASE_URL;
+  if (!raw || raw === "./" || raw === ".") return undefined;
+  const clean = raw.replace(/\/+$/, "");
+  return clean.startsWith("/") ? clean : `/${clean}`;
+};
+
 const App = () => (
   <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
     <LangProvider>
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter basename={import.meta.env.BASE_URL}>
+        <BrowserRouter basename={getRouterBasename()}>
           <Routes>
             <Route path="/" element={<Index />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

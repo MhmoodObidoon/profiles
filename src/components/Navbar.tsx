@@ -21,6 +21,16 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && isOpen) {
+        setIsOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen]);
+
   const navItems = [
     { id: "about", label: t.navbar.about },
     { id: "skills", label: t.navbar.skills },
@@ -92,9 +102,11 @@ const Navbar = () => {
             </button>
 
             <button
-              className="md:hidden p-2 text-foreground hover:text-primary transition-colors"
+              className="md:hidden p-2 text-foreground hover:text-primary transition-colors rounded-lg"
               onClick={() => setIsOpen(!isOpen)}
               aria-label={t.navbar.toggleMenu}
+              aria-expanded={isOpen}
+              aria-controls="mobile-nav"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -104,19 +116,32 @@ const Navbar = () => {
 
       {/* Mobile Drawer */}
       {isOpen && (
-        <div className="md:hidden bg-background/95 backdrop-blur-xl border-b border-border animate-fade-in">
-          <div className="container px-4 py-4 space-y-2">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className="block w-full text-start py-2.5 px-3 rounded-lg text-foreground hover:text-primary hover:bg-card/80 font-bold transition-all"
-              >
-                {item.label}
-              </button>
-            ))}
+        <>
+          <div
+            className="fixed inset-0 bg-black/40 backdrop-blur-xs z-[-1] md:hidden"
+            onClick={() => setIsOpen(false)}
+            aria-hidden="true"
+          />
+          <div
+            id="mobile-nav"
+            role="dialog"
+            aria-modal="true"
+            aria-label={t.navbar.toggleMenu}
+            className="md:hidden bg-background/95 backdrop-blur-xl border-b border-border shadow-xl animate-fade-in"
+          >
+            <div className="container px-4 py-4 space-y-2">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className="block w-full text-start py-3 px-4 rounded-xl text-foreground hover:text-primary hover:bg-card/80 font-bold transition-all text-base"
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
+        </>
       )}
     </nav>
   );
