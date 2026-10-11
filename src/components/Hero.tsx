@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Download, Github, Linkedin, Mail, Instagram } from "lucide-react";
+import { Download, Github, Linkedin, Mail, Instagram, FolderGit2 } from "lucide-react";
 import { useLang } from "@/i18n/LangContext";
 import DevOpsTerminal from "@/components/DevOpsTerminal";
 import CloudNetworkBg from "@/components/CloudNetworkBg";
@@ -8,13 +8,15 @@ const techStack = [
   "Docker",
   "Kubernetes",
   "AWS",
-  "Linux",
+  "Linux (Ubuntu)",
+  "Nginx",
+  "GitHub Actions",
   "Jenkins",
   "Terraform",
-  "GitHub Actions",
   "Prometheus",
   "Grafana",
-  "Nginx",
+  "PostgreSQL",
+  "Python & Bash",
 ];
 
 const socials = [
@@ -57,7 +59,13 @@ const Hero = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             
             {/* Left Column (RTL: Right side / Information & CTAs) */}
-            <div className="lg:col-span-6 space-y-7 text-center lg:text-start animate-fade-in">
+            <div className="lg:col-span-6 space-y-6 text-center lg:text-start animate-fade-in">
+
+              {/* Hiring / Availability Badge */}
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-xs sm:text-sm font-medium shadow-xs">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+                <span>{t.hero.badge}</span>
+              </div>
 
               {/* Main Title & Role */}
               <div className="space-y-3">
@@ -66,40 +74,48 @@ const Hero = () => {
                     {t.hero.name}
                   </span>
                 </h1>
-                <p className="text-xl sm:text-2xl lg:text-3xl text-primary font-extrabold tracking-wide">
-                  {t.hero.role}
-                </p>
+                <div className="space-y-1.5">
+                  <p className="text-xl sm:text-2xl lg:text-3xl text-primary font-extrabold tracking-wide">
+                    {t.hero.role}
+                  </p>
+                  <p className="text-xs sm:text-sm font-mono font-medium text-amber-400/90 tracking-wide">
+                    {t.hero.subtitle}
+                  </p>
+                </div>
               </div>
 
-              {/* Tagline */}
+              {/* Tagline focused on concrete deployment capabilities */}
               <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0">
                 {t.hero.tagline}
               </p>
 
-              {/* CTA Buttons */}
-              <div className="flex flex-wrap gap-4 justify-center lg:justify-start items-center pt-1">
+              {/* Two Prominent CTA Buttons + Socials */}
+              <div className="flex flex-wrap gap-3.5 justify-center lg:justify-start items-center pt-1">
+                {/* Button 1: View Hands-on Projects */}
                 <Button
                   size="lg"
-                  onClick={() => scrollToSection("contact")}
-                  className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-7 py-6 text-base shadow-xl shadow-primary/25 hover:shadow-primary/40 hover:-translate-y-0.5 transition-all"
+                  onClick={() => scrollToSection("projects")}
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-6 py-6 text-base shadow-xl shadow-primary/25 hover:shadow-primary/40 hover:-translate-y-0.5 transition-all gap-2"
                 >
-                  {t.hero.contactBtn}
+                  <FolderGit2 className="w-5 h-5 shrink-0" />
+                  <span>{t.hero.projectsBtn}</span>
                 </Button>
                 
+                {/* Button 2: Download CV */}
                 <Button
                   size="lg"
                   variant="outline"
                   asChild
-                  className="border-2 border-primary/70 bg-primary/5 hover:bg-primary/15 hover:border-primary font-bold text-primary px-7 py-6 text-base transition-all"
+                  className="border-2 border-primary/70 bg-primary/5 hover:bg-primary/15 hover:border-primary font-bold text-primary px-6 py-6 text-base transition-all gap-2"
                 >
                   <a href={cvUrl} download="Mahmoud_Obaidon_DevOps_CV.pdf">
-                    <Download className="w-4 h-4 me-2" />
-                    {t.hero.cvBtn}
+                    <Download className="w-5 h-5 shrink-0" />
+                    <span>{t.hero.cvBtn}</span>
                   </a>
                 </Button>
 
-                {/* Socials */}
-                <div className="flex items-center gap-2 ms-0 sm:ms-2">
+                {/* Social Channels */}
+                <div className="flex items-center gap-2 ms-0 sm:ms-1">
                   {socials.map((social) => (
                     <a
                       key={social.key}
@@ -116,13 +132,13 @@ const Hero = () => {
               </div>
 
               {/* Quick Stats Cards */}
-              <div className="grid grid-cols-3 gap-3 pt-4">
+              <div className="grid grid-cols-3 gap-3 pt-3">
                 {t.hero.stats.map((stat) => (
                   <div
                     key={stat.label}
                     className="rounded-xl border border-border/80 bg-card/70 py-3.5 px-3 backdrop-blur-md shadow-xs hover:border-primary/40 transition-colors text-center lg:text-start"
                   >
-                    <p className="text-2xl sm:text-3xl font-extrabold text-primary">{stat.num}</p>
+                    <p className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-primary">{stat.num}</p>
                     <p className="text-[11px] sm:text-xs font-semibold text-muted-foreground mt-0.5">{stat.label}</p>
                   </div>
                 ))}
@@ -130,7 +146,7 @@ const Hero = () => {
 
             </div>
 
-            {/* Right Column (RTL: Left side / Interactive Terminal) */}
+            {/* Right Column (RTL: Left side / Interactive Terminal Simulator) */}
             <div className="lg:col-span-6 animate-fade-in">
               <div className="relative">
                 {/* Glow effect under terminal */}
@@ -164,5 +180,3 @@ const Hero = () => {
 };
 
 export default Hero;
-
-
