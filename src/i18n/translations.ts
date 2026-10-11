@@ -53,20 +53,45 @@ const ar = {
   about: {
     eyebrow: "نبذة عني",
     title: "من هو محمود عبيدون؟",
-    introPre: "أهلاً بك! أنا ",
-    introName: "محمود أحمد عبيدون",
-    introMid: "، مهندس ",
-    introRole: "DevOps",
-    introPost:
-      " مكرس لبناء بيئات عمل سحابية آمنة ومستقرة. أمتلك خبرة عملية في تحويل التطبيقات إلى حاويات، أتمتة خطوط النشر والتكامل المستمر، وتصميم البنية التحتية كرمز برمجي مع توفير مراقبة حية ومفصلة.",
+    paragraphs: [
+      "أنا محمود عبيدون، مهندس DevOps مبتدئ (Junior DevOps Engineer)، حاصل على بكالوريوس تقنية المعلومات من جامعة سيئون، وأركز على أتمتة نشر التطبيقات، وإدارة الحاويات، وبناء بيئات تشغيل موثوقة وقابلة للصيانة.",
+      "أطبق مهاراتي من خلال مشاريع عملية تشمل نشر تطبيقات الويب باستخدام Docker وDocker Compose وNginx وPostgreSQL، وإعداد مسارات التكامل والنشر المستمر (CI/CD) باستخدام GitHub Actions، إلى جانب العمل على أتمتة البنية التحتية وإعداد الخوادم باستخدام Terraform وAnsible، والتعامل مع بيئات AWS وLinux.",
+      "من أبرز مشاريعي Human Resources وHadramout Portal، وهما مشروعان لعميلين حقيقيين، إلى جانب مشروع Realworld الذي أستخدمه لتطوير وتوثيق ممارسات DevOps، بما يشمل الحاويات والأتمتة وأمن البنية التحتية. كما طبقت Prometheus وGrafana في مشروع للمراقبة وتحليل الأداء.",
+    ],
+    badges: [
+      { label: "بكالوريوس تقنية المعلومات — جامعة سيئون", category: "education" },
+      { label: "مهندس DevOps مبتدئ (Junior DevOps)", category: "role" },
+      { label: "مشاريع منجزة لعملاء حقيقيين", category: "clients" },
+    ],
     highlights: [
-      { term: "(CI/CD Pipelines)", title: "أتمتة النشر والتكامل", desc: "تسريع تسليم التحديثات وتقليل الأخطاء البشرية عبر GitHub Actions و Jenkins." },
-      { term: "(Docker & K8s)", title: "إدارة الحاويات والخدمات", desc: "تحويل التطبيقات لبيئات خفيفة ومستقلة مع أوركسترا Kubernetes و Portainer." },
-      { term: "(Terraform & IaC)", title: "البنية كرمز برمجي", desc: "تجهيز وتكوين الخوادم سحابياً بكفاءة وقابلية للتكرار عبر Terraform و Ansible." },
-      { term: "(Prometheus & Grafana)", title: "المراقبة والتحليل الحثيث", desc: "متابعة أداء الأنظمة وتنبيهات الأعطال لحظياً مع تحليل السجلات ELK." },
+      {
+        term: "(Docker & Compose)",
+        title: "نشر وإدارة الحاويات",
+        desc: "نشر تطبيقات ويب متكاملة معزولة الحاويات، إدارة التخزين الدائم، وربط Nginx وPostgreSQL بكفاءة.",
+      },
+      {
+        term: "(CI/CD Workflows)",
+        title: "أتمتة خطوط النشر",
+        desc: "بناء مسارات مؤتمتة عبر GitHub Actions للفحص وبناء الصور واختبار الأكواد والنشر الآمن المستمر.",
+      },
+      {
+        term: "(Terraform & Ansible)",
+        title: "أتمتة البنية وإعداد الخوادم",
+        desc: "تهيئة وإعداد خوادم Linux وسحابة AWS كرمز برمجي (IaC) لتوفير بيئات قابلة للتكرار والصيانة.",
+      },
+      {
+        term: "(Prometheus & Grafana)",
+        title: "المراقبة وتحليل الأداء",
+        desc: "متابعة استهلاك الموارد وصحة الخدمات لحظياً، وتحليل السجلات ومؤشرات الأداء عبر لوحات مرئية تفاعلية.",
+      },
     ],
     philosophyLead: "مبادئي الأساسية في هندسة الأنظمة والسحابة:",
-    principles: ["الأتمتة الكاملة (Zero Manual Errors)", "المراقبة المستمرة (Continuous Observability)", "المرونة والأمان (Security Hardening)"],
+    principles: [
+      "الأتمتة الكاملة وتقليل التدخل اليدوي (Zero Manual Errors)",
+      "المراقبة المستمرة للأداء وصحة الخدمات (Continuous Observability)",
+      "بناء بيئات آمنة وقابلة للصيانة (Reliability & Security Hardening)",
+    ],
+    projectsCta: "استكشف المشاريع العملية بالتفصيل",
   },
   skills: {
     eyebrow: "الترسانة التقنية",
@@ -497,20 +522,45 @@ const en: Translations = {
   about: {
     eyebrow: "About Me",
     title: "Who is Mahmoud Obaidon?",
-    introPre: "Hello! I'm ",
-    introName: "Mahmoud Ahmed Obaidon",
-    introMid: ", a ",
-    introRole: "DevOps",
-    introPost:
-      " engineer dedicated to building rock-solid, secure, and reproducible cloud environments. I have hands-on experience containerizing applications, configuring network security, automating deployment pipelines, and managing server infrastructure.",
+    paragraphs: [
+      "I am Mahmoud Obaidon, a Junior DevOps Engineer holding a Bachelor's degree in Information Technology from Seiyun University. I focus on application deployment automation, container management, and architecting reliable, maintainable environments.",
+      "I apply my engineering skills through hands-on projects, including containerized web deployments using Docker, Docker Compose, Nginx, and PostgreSQL, automated CI/CD pipelines via GitHub Actions, alongside infrastructure automation and server configuration using Terraform and Ansible across AWS and Linux environments.",
+      "My featured work includes Human Resources and Hadramout Portal—two projects delivered for real clients—as well as the Realworld project, which I utilize to implement and document DevOps best practices, covering containerization, automation, and infrastructure security. I also implemented Prometheus and Grafana for real-time monitoring and performance analysis.",
+    ],
+    badges: [
+      { label: "B.Sc. in IT — Seiyun University", category: "education" },
+      { label: "Junior DevOps Engineer", category: "role" },
+      { label: "Delivered for Real Clients", category: "clients" },
+    ],
     highlights: [
-      { term: "(CI/CD Pipelines)", title: "Release Automation", desc: "Accelerating delivery cycles and eliminating manual errors via GitHub Actions & Jenkins." },
-      { term: "(Docker & K8s)", title: "Container Orchestration", desc: "Isolating applications into lightweight containers managed via Kubernetes & Portainer." },
-      { term: "(Terraform & IaC)", title: "Infrastructure as Code", desc: "Provisioning and configuring server environments programmatically using Terraform & Ansible." },
-      { term: "(Prometheus & Grafana)", title: "Observability & Metrics", desc: "Real-time metrics, system health dashboards, and centralized ELK logging." },
+      {
+        term: "(Docker & Compose)",
+        title: "Containerization & Delivery",
+        desc: "Deploying isolated web applications using Docker Compose, reverse proxies with Nginx, and managed PostgreSQL databases.",
+      },
+      {
+        term: "(CI/CD Workflows)",
+        title: "Deployment Automation",
+        desc: "Architecting automated GitHub Actions workflows for continuous linting, image builds, testing, and verified releases.",
+      },
+      {
+        term: "(Terraform & Ansible)",
+        title: "IaC & Server Automation",
+        desc: "Provisioning AWS cloud infrastructure and automating Linux server hardening programmatically as code.",
+      },
+      {
+        term: "(Prometheus & Grafana)",
+        title: "Observability & Performance",
+        desc: "Collecting real-time service telemetry, visual dashboard analysis, and monitoring operational reliability.",
+      },
     ],
     philosophyLead: "Core principles guiding my DevOps engineering:",
-    principles: ["Full Automation (Zero Manual Errors)", "Continuous Observability", "Resilience & Security Hardening"],
+    principles: [
+      "Full Automation & Minimal Manual Friction (Zero Manual Errors)",
+      "Continuous Observability & Health Telemetry",
+      "Reliability & Infrastructure Security Hardening",
+    ],
+    projectsCta: "Explore Practical Projects in Detail",
   },
   skills: {
     eyebrow: "Technical Stack",
