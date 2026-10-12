@@ -18,6 +18,7 @@ import {
   UserCheck,
   FlaskConical,
   ShieldCheck,
+  Lock,
   type LucideIcon,
 } from "lucide-react";
 import Reveal from "@/components/Reveal";
@@ -31,6 +32,7 @@ interface ProjectItem {
   statusText: string;
   typeBadge?: string;
   repoUrl?: string;
+  isPrivate?: boolean;
   title: string;
   category: string;
   description: string;
@@ -338,17 +340,27 @@ const Projects = () => {
                           <ArrowRight className={`w-3 h-3 transition-transform ${isExpanded ? "rotate-90" : ""}`} />
                         </button>
 
-                        {/* GitHub Repository Link Button */}
-                        <a
-                          href={project.repoUrl || "https://github.com/Eng-m-devops"}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl border border-border bg-card hover:bg-background text-foreground hover:text-primary text-xs font-bold transition-all"
-                        >
-                          <Github className="w-3.5 h-3.5 text-primary" />
-                          <span className="truncate">{t.projects.viewRepoBtn}</span>
-                          <ExternalLink className="w-3 h-3 text-muted-foreground" />
-                        </a>
+                        {/* GitHub Repository Link Button or Private NDA Badge */}
+                        {project.isPrivate ? (
+                          <div
+                            className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl border border-amber-500/25 bg-amber-500/5 text-amber-300 text-xs font-semibold cursor-default select-none"
+                            title={lang === "ar" ? "مشروع خاص بالعميل ومحمي باتفاقية سرية (NDA)" : "Proprietary client codebase protected under NDA"}
+                          >
+                            <Lock className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                            <span className="truncate">{t.projects.privateRepoLabel}</span>
+                          </div>
+                        ) : (
+                          <a
+                            href={project.repoUrl || "https://github.com/Eng-m-devops"}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl border border-border bg-card hover:bg-background text-foreground hover:text-primary text-xs font-bold transition-all"
+                          >
+                            <Github className="w-3.5 h-3.5 text-primary shrink-0" />
+                            <span className="truncate">{t.projects.viewRepoBtn}</span>
+                            <ExternalLink className="w-3 h-3 text-muted-foreground shrink-0" />
+                          </a>
+                        )}
                       </div>
                     </div>
                   </article>

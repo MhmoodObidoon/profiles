@@ -10,6 +10,8 @@ import {
   ArrowLeft,
   ArrowRight,
   FolderGit2,
+  BadgeCheck,
+  ShieldCheck,
 } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import SectionHeader from "@/components/SectionHeader";
@@ -95,17 +97,21 @@ const About = () => {
                     {t.about.paragraphs[2]}
                   </p>
                   <div className="flex flex-wrap items-center gap-2 pt-1">
-                    <span className="text-xs font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded-lg">
-                      ✓ Human Resources (Real Client)
+                    <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded-lg">
+                      <BadgeCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                      <span>Human Resources (Real Client)</span>
                     </span>
-                    <span className="text-xs font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded-lg">
-                      ✓ Hadramout Portal (Real Client)
+                    <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded-lg">
+                      <BadgeCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                      <span>Hadramout Portal (Real Client)</span>
                     </span>
-                    <span className="text-xs font-bold text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 px-2.5 py-1 rounded-lg">
-                      ⚡ Realworld (DevOps & Security)
+                    <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 px-2.5 py-1 rounded-lg">
+                      <ShieldCheck className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
+                      <span>Realworld (DevOps & Security)</span>
                     </span>
-                    <span className="text-xs font-bold text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2.5 py-1 rounded-lg">
-                      📊 Prometheus & Grafana (Monitoring)
+                    <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2.5 py-1 rounded-lg">
+                      <Activity className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                      <span>Prometheus & Grafana (Monitoring)</span>
                     </span>
                   </div>
                 </div>
