@@ -6,6 +6,24 @@ import CloudNetworkBg from "@/components/CloudNetworkBg";
 
 
 
+const techStack = [
+  { name: "Docker",         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-plain.svg" },
+  { name: "Kubernetes",     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" },
+  { name: "AWS",            icon: "https://cdn.simpleicons.org/amazonaws/FF9900" },
+  { name: "Linux",          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" },
+  { name: "Nginx",          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg" },
+  { name: "GitHub Actions", icon: "https://cdn.simpleicons.org/githubactions/2088FF" },
+  { name: "Jenkins",        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg" },
+  { name: "Terraform",      icon: "https://cdn.simpleicons.org/terraform/7B42BC" },
+  { name: "Prometheus",     icon: "https://cdn.simpleicons.org/prometheus/E6522C" },
+  { name: "Grafana",        icon: "https://cdn.simpleicons.org/grafana/F46800" },
+  { name: "PostgreSQL",     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
+  { name: "Python",         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+  { name: "Bash",           icon: "https://cdn.simpleicons.org/gnubash/4EAA25" },
+  { name: "Git",            icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
+  { name: "Ubuntu",         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ubuntu/ubuntu-plain.svg" },
+];
+
 const socials = [
   { icon: Github, href: "https://github.com/Eng-m-devops", key: "github" },
   { icon: Linkedin, href: "https://www.linkedin.com/in/mahmoodobidoon", key: "linkedin" },
@@ -134,6 +152,31 @@ const Hero = () => {
         </div>
       </div>
 
+      {/* Marquee tech icons ticker */}
+      <div
+        className="mt-16 border-t border-border/60 bg-background/70 backdrop-blur-md py-4 overflow-hidden"
+        dir="ltr"
+      >
+        <div className="flex w-max animate-marquee gap-6 hover:[animation-play-state:paused]">
+          {[...techStack, ...techStack].map((tech, i) => (
+            <div
+              key={`${tech.name}-${i}`}
+              className="flex flex-col items-center gap-1.5 px-3 group cursor-default"
+              title={tech.name}
+            >
+              <img
+                src={tech.icon}
+                alt={tech.name}
+                className="w-8 h-8 object-contain opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-200"
+                loading="lazy"
+              />
+              <span className="text-[10px] text-muted-foreground/60 group-hover:text-muted-foreground font-mono whitespace-nowrap transition-colors">
+                {tech.name}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 };
