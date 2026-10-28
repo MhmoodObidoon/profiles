@@ -4,20 +4,7 @@ import { useLang } from "@/i18n/LangContext";
 import DevOpsTerminal from "@/components/DevOpsTerminal";
 import CloudNetworkBg from "@/components/CloudNetworkBg";
 
-const techStack = [
-  "Docker",
-  "Kubernetes",
-  "AWS",
-  "Linux (Ubuntu)",
-  "Nginx",
-  "GitHub Actions",
-  "Jenkins",
-  "Terraform",
-  "Prometheus",
-  "Grafana",
-  "PostgreSQL",
-  "Python & Bash",
-];
+
 
 const socials = [
   { icon: Github, href: "https://github.com/Eng-m-devops", key: "github" },
@@ -147,22 +134,6 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Marquee tech ticker */}
-      <div
-        className="mt-16 border-t border-border bg-background/80 backdrop-blur-md py-3.5 overflow-hidden marquee-mask"
-        dir="ltr"
-      >
-        <div className="flex w-max animate-marquee gap-4 hover:[animation-play-state:paused]">
-          {[...techStack, ...techStack].map((tech, i) => (
-            <span
-              key={`${tech}-${i}`}
-              className="px-5 py-1.5 rounded-full border border-border bg-card/80 text-sm font-semibold text-muted-foreground whitespace-nowrap shadow-xs hover:border-primary/50 transition-colors"
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
-      </div>
     </section>
   );
 };
