@@ -131,18 +131,6 @@ const Hero = () => {
                 </div>
               </div>
 
-              {/* Quick Stats Cards */}
-              <div className="grid grid-cols-3 gap-3 pt-3">
-                {t.hero.stats.map((stat) => (
-                  <div
-                    key={stat.label}
-                    className="rounded-xl border border-border/80 bg-card/70 py-3.5 px-3 backdrop-blur-md shadow-xs hover:border-primary/40 transition-colors text-center lg:text-start"
-                  >
-                    <p className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-primary">{stat.num}</p>
-                    <p className="text-[11px] sm:text-xs font-semibold text-muted-foreground mt-0.5">{stat.label}</p>
-                  </div>
-                ))}
-              </div>
 
             </div>
 

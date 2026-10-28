@@ -95,6 +95,7 @@ const Projects = () => {
     { id: "Client", labelAr: "مشاريع عملاء حقيقية", labelEn: "Client Projects" },
     { id: "Kubernetes", labelAr: "Kubernetes", labelEn: "Kubernetes" },
     { id: "Monitoring", labelAr: "المراقبة والأنظمة", labelEn: "Monitoring" },
+    { id: "Security", labelAr: "الشبكات والأمان", labelEn: "Security" },
   ];
 
   const filteredProjects = activeCategory === "All"
@@ -212,23 +213,6 @@ const Projects = () => {
                           </div>
                         </div>
                       )}
-
-                      {/* Deployment Target & Environment Info Bar */}
-                      <div className="grid grid-cols-2 gap-2 bg-background/70 border border-border/60 rounded-xl p-3 mb-6 text-xs text-start">
-                        <div className="ps-1">
-                          <p className="text-muted-foreground text-[11px] mb-0.5">{t.projects.statusHeading}</p>
-                          <p className="font-bold text-foreground text-xs flex items-center gap-1.5">
-                            <span className={`w-2 h-2 rounded-full ${currentStatusCfg.dot}`} />
-                            {project.statusText}
-                          </p>
-                        </div>
-                        <div className="ps-2 border-s border-border/60">
-                          <p className="text-muted-foreground text-[11px] mb-0.5">{t.projects.targetHeading}</p>
-                          <p className="font-semibold text-primary text-xs truncate" dir="ltr">
-                            {project.deploymentTarget}
-                          </p>
-                        </div>
-                      </div>
 
                       {/* Architecture Blueprint & Verification Details Accordion */}
                       {isExpanded && (

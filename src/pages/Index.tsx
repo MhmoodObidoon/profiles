@@ -4,7 +4,6 @@ import About from "@/components/About";
 import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
 import PipelineVisualizer from "@/components/PipelineVisualizer";
-import SystemHealthWidget from "@/components/SystemHealthWidget";
 import Experience from "@/components/Experience";
 import Education from "@/components/Education";
 import Contact from "@/components/Contact";
@@ -34,12 +33,6 @@ const Index = () => {
       <About />
       <Skills />
       
-      {/* Live System Health Dashboard */}
-      <section className="py-12 bg-background border-y border-border/50">
-        <div className="container px-4">
-          <SystemHealthWidget />
-        </div>
-      </section>
 
       <Projects />
 
