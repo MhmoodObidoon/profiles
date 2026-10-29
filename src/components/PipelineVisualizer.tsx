@@ -70,14 +70,13 @@ const PipelineVisualizer = () => {
   const { lang } = useLang();
   const [currentStep, setCurrentStep] = useState<number>(0);
   const [isRunning, setIsRunning] = useState<boolean>(false);
-  const [logs, setLogs] = useState<string[]>([]);
+  const [loggedSteps, setLoggedSteps] = useState<number[]>([]);
 
   const startPipeline = () => {
     if (isRunning) return;
     setIsRunning(true);
     setCurrentStep(1);
-    const initialLog = lang === "ar" ? pipelineSteps[0].logAr : pipelineSteps[0].logEn;
-    setLogs([initialLog]);
+    setLoggedSteps([1]);
   };
 
   useEffect(() => {
@@ -87,8 +86,7 @@ const PipelineVisualizer = () => {
       const timer = setTimeout(() => {
         const nextStep = currentStep + 1;
         setCurrentStep(nextStep);
-        const nextLog = lang === "ar" ? pipelineSteps[nextStep - 1].logAr : pipelineSteps[nextStep - 1].logEn;
-        setLogs((prev) => [...prev, nextLog]);
+        setLoggedSteps((prev) => [...prev, nextStep]);
       }, 1400);
 
       return () => clearTimeout(timer);
@@ -194,14 +192,14 @@ const PipelineVisualizer = () => {
           </span>
         </div>
 
-        {logs.length === 0 ? (
+        {loggedSteps.length === 0 ? (
           <p className="text-slate-500 italic">
             {lang === "ar" ? "اضغط على زر [ Run Pipeline ] لتشغيل محاكاة النشر." : "Click [ Run Pipeline Demo ] above to watch automated deployment."}
           </p>
         ) : (
-          logs.map((log, i) => (
-            <p key={i} className="text-cyan-300 animate-fade-in leading-relaxed">
-              {log}
+          loggedSteps.map((stepId) => (
+            <p key={stepId} className="text-cyan-300 animate-fade-in leading-relaxed">
+              {lang === "ar" ? pipelineSteps[stepId - 1].logAr : pipelineSteps[stepId - 1].logEn}
             </p>
           ))
         )}

@@ -443,6 +443,7 @@ const ar = {
     subtitle: "يسعدني التباحث معك حول الفرص الوظيفية والمشاريع السحابية وأتمتة النشر",
     copyEmail: "نسخ البريد الإلكتروني",
     copied: "تم النسخ بنجاح!",
+    copyError: "تعذر النسخ. انسخ البريد يدويًا.",
     info: [
       { key: "email", title: "البريد الإلكتروني" },
       { key: "phone", title: "رقم الهاتف / الواتساب" },
@@ -922,6 +923,7 @@ const en: Translations = {
     subtitle: "Reach out to discuss cloud opportunities, DevOps consulting, or custom infrastructure projects",
     copyEmail: "Copy Email Address",
     copied: "Copied Successfully!",
+    copyError: "Copy failed. Please copy the email manually.",
     info: [
       { key: "email", title: "Email Address" },
       { key: "phone", title: "Phone / WhatsApp" },
@@ -959,4 +961,3 @@ const en: Translations = {
 };
 
 export const translations: Record<Lang, Translations> = { ar, en };
-

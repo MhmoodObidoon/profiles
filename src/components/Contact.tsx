@@ -23,12 +23,16 @@ const Contact = () => {
     email: "",
     message: "",
   });
-  const [copied, setCopied] = useState(false);
+  const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "error">("idle");
 
-  const handleCopyEmail = () => {
-    navigator.clipboard.writeText(EMAIL);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2500);
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(EMAIL);
+      setCopyStatus("copied");
+    } catch {
+      setCopyStatus("error");
+    }
+    setTimeout(() => setCopyStatus("idle"), 2500);
   };
 
   const handleOpenMailto = () => {
@@ -65,7 +69,6 @@ const Contact = () => {
         message,
         _subject: `New Portfolio Message from ${name} (${senderEmail})`,
         _template: "table",
-        _captcha: "false",
       };
 
       const res = await fetch(CONTACT_ENDPOINT, {
@@ -160,8 +163,20 @@ const Contact = () => {
                         onClick={handleCopyEmail}
                         className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-card text-xs font-bold text-muted-foreground hover:text-primary hover:border-primary transition-all mt-2"
                       >
-                        {copied ? <Check className="w-3.5 h-3.5 text-emerald-500" /> : <Copy className="w-3.5 h-3.5" />}
-                        <span>{copied ? t.contact.copied : t.contact.copyEmail}</span>
+                        {copyStatus === "copied" ? (
+                          <Check className="w-3.5 h-3.5 text-emerald-500" />
+                        ) : copyStatus === "error" ? (
+                          <AlertCircle className="w-3.5 h-3.5 text-destructive" />
+                        ) : (
+                          <Copy className="w-3.5 h-3.5" />
+                        )}
+                        <span>
+                          {copyStatus === "copied"
+                            ? t.contact.copied
+                            : copyStatus === "error"
+                              ? t.contact.copyError
+                              : t.contact.copyEmail}
+                        </span>
                       </button>
                     )}
                   </div>
