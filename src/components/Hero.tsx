@@ -9,7 +9,7 @@ import CloudNetworkBg from "@/components/CloudNetworkBg";
 const techStack = [
   { name: "Docker",         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-plain.svg" },
   { name: "Kubernetes",     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" },
-  { name: "AWS",            icon: "https://cdn.simpleicons.org/amazonaws/FF9900" },
+  { name: "AWS",            icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" },
   { name: "Linux",          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" },
   { name: "Nginx",          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg" },
   { name: "GitHub Actions", icon: "https://cdn.simpleicons.org/githubactions/2088FF" },
@@ -169,6 +169,11 @@ const Hero = () => {
                 alt={tech.name}
                 className="w-8 h-8 object-contain opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-200"
                 loading="lazy"
+                onError={(e) => {
+                  if (tech.name === "AWS") {
+                    e.currentTarget.src = `${baseUrl}icons/aws.svg`;
+                  }
+                }}
               />
               <span className="text-[10px] text-muted-foreground/60 group-hover:text-muted-foreground font-mono whitespace-nowrap transition-colors">
                 {tech.name}
