@@ -149,7 +149,7 @@ const PipelineVisualizer = () => {
         />
 
         {/* Pipeline Nodes Grid */}
-        <div className="grid grid-cols-5 gap-2 relative z-10">
+        <div className="grid grid-cols-5 gap-1 sm:gap-2 relative z-10">
           {pipelineSteps.map((step) => {
             const StepIcon = step.icon;
             const isActive = currentStep >= step.id;
@@ -159,7 +159,7 @@ const PipelineVisualizer = () => {
               <div key={step.id} className="flex flex-col items-center text-center">
                 {/* Node Circle Icon */}
                 <div
-                  className={`w-12 h-12 md:w-14 md:h-14 rounded-2xl flex items-center justify-center border-2 transition-all duration-500 shadow-md ${
+                  className={`w-9 h-9 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-xl sm:rounded-2xl flex items-center justify-center border-2 transition-all duration-500 shadow-md ${
                     isCurrent
                       ? "bg-primary text-primary-foreground border-cyan-400 scale-110 shadow-lg shadow-primary/40 animate-pulse"
                       : isActive
@@ -167,14 +167,14 @@ const PipelineVisualizer = () => {
                         : "bg-card text-muted-foreground border-border"
                   }`}
                 >
-                  <StepIcon className={`w-5 h-5 md:w-6 md:h-6 ${isCurrent ? "animate-bounce" : ""}`} />
+                  <StepIcon className={`w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 ${isCurrent ? "animate-bounce" : ""}`} />
                 </div>
 
                 {/* Step Labels */}
-                <p className={`text-xs md:text-sm font-bold mt-3 transition-colors ${isActive ? "text-primary" : "text-muted-foreground"}`}>
+                <p className={`text-[10px] sm:text-xs md:text-sm font-bold mt-2 sm:mt-3 transition-colors ${isActive ? "text-primary" : "text-muted-foreground"}`}>
                   {lang === "ar" ? step.labelAr : step.labelEn}
                 </p>
-                <p className="text-[10px] md:text-xs font-mono text-muted-foreground hidden sm:block mt-0.5">
+                <p className="text-[9px] sm:text-[10px] md:text-xs font-mono text-muted-foreground hidden sm:block mt-0.5">
                   {lang === "ar" ? step.subAr : step.subEn}
                 </p>
               </div>
@@ -182,6 +182,23 @@ const PipelineVisualizer = () => {
           })}
         </div>
       </div>
+
+      {/* Success Notification Banner */}
+      {currentStep === 5 && !isRunning && (
+        <div className="mb-4 p-3.5 rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 flex items-center justify-between gap-3 text-xs md:text-sm font-semibold animate-fade-in">
+          <div className="flex items-center gap-2">
+            <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+            <span>
+              {lang === "ar"
+                ? "اكتمل خط النشر بنجاح وتم التحقق من سلامة كافة مؤشرات البيئة! 🎉"
+                : "Automated pipeline deployed successfully with all environment checks verified! 🎉"}
+            </span>
+          </div>
+          <span className="hidden sm:inline-block font-mono text-xs bg-emerald-500/20 px-2 py-0.5 rounded text-emerald-800 dark:text-emerald-300">
+            STATUS: 200 OK
+          </span>
+        </div>
+      )}
 
       {/* Live Deployment Logs Console */}
       <div className="rounded-2xl border border-slate-800 bg-slate-950 text-slate-100 p-4 md:p-5 font-mono text-xs text-start space-y-2 max-h-40 overflow-y-auto">

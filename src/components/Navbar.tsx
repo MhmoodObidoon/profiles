@@ -7,6 +7,7 @@ import { useLang } from "@/i18n/LangContext";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("");
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
   const { lang, setLang, t } = useLang();
@@ -14,10 +15,27 @@ const Navbar = () => {
   useEffect(() => setMounted(true), []);
 
   useEffect(() => {
+    const sectionIds = ["about", "skills", "projects", "experience", "education", "contact"];
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 40);
+
+      const scrollPosition = window.scrollY + 180;
+      let currentSection = "";
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (el) {
+          const top = el.offsetTop;
+          const height = el.offsetHeight;
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            currentSection = id;
+          }
+        }
+      }
+      setActiveSection(currentSection);
     };
-    window.addEventListener("scroll", handleScroll);
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -66,16 +84,26 @@ const Navbar = () => {
           </button>
 
           {/* Nav Items (Desktop) */}
-          <div className="hidden md:flex items-center gap-7 bg-card/60 backdrop-blur-md px-6 py-2 rounded-full border border-border/60 shadow-xs">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className="text-foreground/90 hover:text-primary transition-colors text-sm font-bold tracking-wide"
-              >
-                {item.label}
-              </button>
-            ))}
+          <div className="hidden md:flex items-center gap-2 bg-card/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-border/60 shadow-xs">
+            {navItems.map((item) => {
+              const isActive = activeSection === item.id;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`relative px-3.5 py-1.5 rounded-full transition-all text-sm font-bold tracking-wide ${
+                    isActive
+                      ? "text-primary bg-primary/10 shadow-xs"
+                      : "text-foreground/80 hover:text-primary"
+                  }`}
+                >
+                  {item.label}
+                  {isActive && (
+                    <span className="absolute -bottom-0.5 start-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-primary" />
+                  )}
+                </button>
+              );
+            })}
           </div>
 
           {/* Action buttons (Language & Theme & Mobile menu toggle) */}
@@ -130,15 +158,22 @@ const Navbar = () => {
             className="md:hidden bg-background/95 backdrop-blur-xl border-b border-border shadow-xl animate-fade-in"
           >
             <div className="container px-4 py-4 space-y-2">
-              {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className="block w-full text-start py-3 px-4 rounded-xl text-foreground hover:text-primary hover:bg-card/80 font-bold transition-all text-base"
-                >
-                  {item.label}
-                </button>
-              ))}
+              {navItems.map((item) => {
+                const isActive = activeSection === item.id;
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => scrollToSection(item.id)}
+                    className={`block w-full text-start py-3 px-4 rounded-xl font-bold transition-all text-base ${
+                      isActive
+                        ? "text-primary bg-primary/15 border-s-4 border-primary"
+                        : "text-foreground hover:text-primary hover:bg-card/80"
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                );
+              })}
             </div>
           </div>
         </>

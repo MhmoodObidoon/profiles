@@ -67,8 +67,8 @@ const Hero = () => {
             <div className="lg:col-span-6 space-y-6 text-center lg:text-start animate-fade-in">
 
               {/* Hiring / Availability Badge */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-xs sm:text-sm font-medium shadow-xs">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs sm:text-sm font-semibold shadow-xs">
+                <span className="w-2 h-2 rounded-full bg-emerald-600 dark:bg-emerald-400 animate-pulse shrink-0" />
                 <span>{t.hero.badge}</span>
               </div>
 
@@ -83,7 +83,7 @@ const Hero = () => {
                   <p className="text-xl sm:text-2xl lg:text-3xl text-primary font-extrabold tracking-wide">
                     {t.hero.role}
                   </p>
-                  <p className="text-xs sm:text-sm font-mono font-medium text-amber-400/90 tracking-wide">
+                  <p className="text-xs sm:text-sm font-mono font-semibold text-amber-700 dark:text-amber-400/95 tracking-wide">
                     {t.hero.subtitle}
                   </p>
                 </div>
@@ -154,7 +154,7 @@ const Hero = () => {
 
       {/* Marquee tech icons ticker */}
       <div
-        className="mt-16 border-t border-border/60 bg-background/70 backdrop-blur-md py-4 overflow-hidden"
+        className="mt-16 border-t border-border/60 bg-background/70 backdrop-blur-md py-4 overflow-hidden marquee-mask"
         dir="ltr"
       >
         <div className="flex w-max animate-marquee gap-6 hover:[animation-play-state:paused]">

@@ -14,23 +14,23 @@ const icons = {
 const levelBadgeConfig: Record<string, { bg: string; text: string; border: string; dot: string; icon: typeof CheckCircle2 }> = {
   production: {
     bg: "bg-emerald-500/10",
-    text: "text-emerald-400",
+    text: "text-emerald-700 dark:text-emerald-400",
     border: "border-emerald-500/30",
-    dot: "bg-emerald-400",
+    dot: "bg-emerald-600 dark:bg-emerald-400",
     icon: CheckCircle2,
   },
   lab: {
     bg: "bg-cyan-500/10",
-    text: "text-cyan-400",
+    text: "text-cyan-700 dark:text-cyan-400",
     border: "border-cyan-500/30",
-    dot: "bg-cyan-400",
+    dot: "bg-cyan-600 dark:bg-cyan-400",
     icon: FlaskConical,
   },
   foundation: {
     bg: "bg-amber-500/10",
-    text: "text-amber-400",
+    text: "text-amber-700 dark:text-amber-400",
     border: "border-amber-500/30",
-    dot: "bg-amber-400",
+    dot: "bg-amber-600 dark:bg-amber-400",
     icon: BookOpen,
   },
 };
@@ -144,7 +144,7 @@ const Skills = () => {
                                 </span>
                               </div>
 
-                              <p className="text-xs md:text-sm font-mono text-cyan-400 font-semibold leading-relaxed" dir="ltr" style={{ textAlign: "start" }}>
+                              <p className="text-xs md:text-sm font-mono text-cyan-700 dark:text-cyan-400 font-semibold leading-relaxed" dir="ltr" style={{ textAlign: "start" }}>
                                 {skill.tools}
                               </p>
 
