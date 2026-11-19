@@ -23,14 +23,16 @@ const DevOpsTerminal = () => {
         id: "welcome-1",
         type: "output",
         content: (
-          <div className="space-y-1.5 text-xs md:text-sm">
-            <p className="text-cyan-400 font-semibold">
-              🚀 {t.terminal.title}
+          <div className="space-y-1 text-xs md:text-sm font-mono pb-2 border-b border-slate-800/80">
+            <p className="text-cyan-400 font-bold">
+              🚀 Mahmoud Ahmed Obaidon — DevOps &amp; Cloud Shell (v2.4)
             </p>
-            <div className="text-amber-300/95 bg-amber-500/10 border border-amber-500/20 px-3 py-1.5 rounded-lg text-xs font-sans leading-relaxed">
-              {t.terminal.note}
-            </div>
-            <p className="text-muted-foreground text-xs font-sans">{t.terminal.hint}</p>
+            <p className="text-slate-400 text-xs">
+              Ubuntu 22.04 LTS • Docker 26.x • Nginx • CI/CD • Terraform
+            </p>
+            <p className="text-slate-500 text-xs pt-0.5">
+              Type <span className="text-amber-400 font-semibold">'help'</span> or <span className="text-emerald-400 font-semibold">'status'</span>, or use the quick buttons below.
+            </p>
           </div>
         ),
       },
@@ -62,9 +64,9 @@ const DevOpsTerminal = () => {
           id: `welcome-${Date.now()}`,
           type: "output",
           content: (
-            <div className="space-y-1 text-xs md:text-sm">
-              <p className="text-cyan-400 font-semibold">🚀 {t.terminal.title}</p>
-              <p className="text-muted-foreground text-xs font-sans">{t.terminal.hint}</p>
+            <div className="space-y-1 text-xs md:text-sm font-mono pb-2 border-b border-slate-800/80">
+              <p className="text-cyan-400 font-bold">🚀 Mahmoud Ahmed Obaidon — DevOps Shell</p>
+              <p className="text-slate-400 text-xs">Terminal cleared. Type 'help' for commands list.</p>
             </div>
           ),
         },
@@ -240,41 +242,38 @@ const DevOpsTerminal = () => {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto rounded-2xl border border-primary/30 bg-slate-950/90 text-slate-100 shadow-2xl shadow-primary/10 overflow-hidden font-mono text-start dir-ltr">
+    <div
+      dir="ltr"
+      className="w-full max-w-4xl mx-auto rounded-2xl border border-primary/30 bg-slate-950/95 text-slate-100 shadow-2xl shadow-primary/10 overflow-hidden font-mono text-left"
+    >
       {/* Header bar */}
-      <div className="flex items-center justify-between px-4 py-3 bg-slate-900/90 border-b border-slate-800 select-none">
+      <div className="flex items-center justify-between px-4 py-2.5 bg-slate-900/90 border-b border-slate-800 select-none">
         <div className="flex items-center gap-2">
-          <span className="w-3 h-3 rounded-full bg-red-500/80 inline-block" />
-          <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block" />
-          <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block" />
-          <span className="text-xs text-slate-400 ms-2 font-sans font-medium flex items-center gap-1.5">
+          <span className="w-3 h-3 rounded-full bg-[#ff5f56] inline-block shadow-xs" />
+          <span className="w-3 h-3 rounded-full bg-[#ffbd2e] inline-block shadow-xs" />
+          <span className="w-3 h-3 rounded-full bg-[#27c93f] inline-block shadow-xs" />
+          <span className="text-xs text-slate-400 ms-2 font-mono flex items-center gap-1.5">
             <TerminalIcon className="w-3.5 h-3.5 text-primary" />
-            {t.terminal.title}
+            <span>mahmoud@devops-server: ~</span>
           </span>
         </div>
-        <div className="flex items-center gap-1.5 text-[11px] text-amber-300 bg-amber-500/10 px-2.5 py-0.5 rounded-full border border-amber-500/20 font-sans font-medium">
-          <Sparkles className="w-3 h-3 text-amber-400" />
-          <span>{t.terminal.badge}</span>
+        <div className="flex items-center gap-1.5 text-[11px] font-mono font-medium text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/20">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          <span>online</span>
         </div>
-      </div>
-
-      {/* Prominent Disclaimer Strip */}
-      <div className="bg-amber-500/10 border-b border-amber-500/20 px-4 py-2 flex items-center gap-2 text-xs text-amber-300/90 font-sans">
-        <Info className="w-4 h-4 shrink-0 text-amber-400" />
-        <span className="leading-normal">{t.terminal.note}</span>
       </div>
 
       {/* Terminal content */}
       <div
         ref={scrollContainerRef}
-        className="p-4 md:p-6 min-h-[220px] max-h-[380px] overflow-y-auto space-y-3 font-mono text-sm leading-relaxed"
+        className="p-4 md:p-6 min-h-[220px] max-h-[360px] overflow-y-auto space-y-3 font-mono text-sm leading-relaxed"
         onClick={() => inputRef.current?.focus()}
       >
         {history.map((item) => (
           <div key={item.id}>
             {item.type === "input" ? (
               <div className="flex items-center gap-2 text-cyan-400">
-                <span className="text-emerald-400 font-semibold">{t.terminal.prompt}</span>
+                <span className="text-emerald-400 font-bold shrink-0 select-none">{t.terminal.prompt}</span>
                 <span className="text-slate-100">{item.content}</span>
               </div>
             ) : (
@@ -284,15 +283,19 @@ const DevOpsTerminal = () => {
         ))}
 
         {/* Input line */}
-        <form onSubmit={handleSubmit} className="flex items-center gap-2 pt-1">
-          <span className="text-emerald-400 font-semibold shrink-0">{t.terminal.prompt}</span>
+        <form onSubmit={handleSubmit} className="flex items-center gap-2 pt-1" dir="ltr">
+          <span className="text-emerald-400 font-bold shrink-0 select-none">{t.terminal.prompt}</span>
           <input
             ref={inputRef}
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            className="flex-1 bg-transparent text-slate-100 outline-none border-none font-mono text-sm focus:ring-0 p-0"
-            placeholder="type 'help', 'status', 'docker ps'..."
+            className="flex-1 bg-transparent text-slate-100 outline-none border-none font-mono text-sm focus:ring-0 p-0 text-left"
+            placeholder="try 'status', 'docker ps', 'whoami', 'skills'..."
+            dir="ltr"
+            autoCapitalize="none"
+            autoComplete="off"
+            spellCheck={false}
           />
           <button type="submit" className="text-slate-500 hover:text-cyan-400 transition-colors p-1" aria-label="Run command">
             <CornerDownLeft className="w-4 h-4" />
@@ -301,13 +304,13 @@ const DevOpsTerminal = () => {
       </div>
 
       {/* Quick Action Pills */}
-      <div className="px-4 py-2.5 bg-slate-900/60 border-t border-slate-800/80 flex flex-wrap items-center gap-2">
-        <span className="text-xs text-slate-400 me-1 font-sans">{lang === "ar" ? "أوامر سريعة:" : "Quick Run:"}</span>
+      <div className="px-4 py-2.5 bg-slate-900/70 border-t border-slate-800/80 flex flex-wrap items-center gap-2" dir="ltr">
+        <span className="text-xs text-slate-400 me-1 font-mono text-[11px]">{lang === "ar" ? "أوامر سريعة:" : "Quick Run:"}</span>
         {t.terminal.quickBtns.map((btn) => (
           <button
             key={btn.label}
             onClick={() => handleRunCommand(btn.cmd)}
-            className="px-2.5 py-1 rounded bg-slate-800 hover:bg-primary/20 text-cyan-300 hover:text-cyan-200 border border-slate-700/60 hover:border-primary/40 text-xs transition-all font-mono"
+            className="px-2.5 py-1 rounded bg-slate-800/90 hover:bg-primary/20 text-cyan-300 hover:text-cyan-200 border border-slate-700/60 hover:border-primary/40 text-xs transition-all font-mono"
           >
             {btn.label}
           </button>

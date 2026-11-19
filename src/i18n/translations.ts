@@ -30,11 +30,11 @@ const ar = {
     socials: { github: "GitHub", linkedin: "LinkedIn", instagram: "انستقرام", email: "البريد الإلكتروني" },
   },
   terminal: {
-    title: "محاكي أوامر توضيحي تفاعلي — mahmoud@devops-demo:~",
-    badge: "محاكي توضيحي (Showcase Demo)",
-    note: "ملاحظة توضيحية: هذه مخرجات محاكاة تفاعلية داخل المتصفح لنماذج المشاريع الفعلية وليست اتصالاً بسيرفر إنتاجي مباشر.",
-    hint: "محاكي توضيحي داخل المتصفح لعرض المهارات وهيكلية المشاريع — اكتب الأوامر أو اضغط الأزرار السريعة:",
-    prompt: "mahmoud@devops-demo:~$",
+    title: "mahmoud@devops-server:~",
+    badge: "Ubuntu 22.04 LTS",
+    note: "محاكي تفاعلي لمشاريع وهيكلية البنية التحتية.",
+    hint: "اكتب الأوامر مثل 'status' أو 'docker ps' أو اضغط الأزرار السريعة:",
+    prompt: "mahmoud@devops:~$",
     quickBtns: [
       { label: "status", cmd: "status" },
       { label: "docker ps", cmd: "docker ps" },
@@ -512,11 +512,11 @@ const en: Translations = {
     socials: { github: "GitHub", linkedin: "LinkedIn", instagram: "Instagram", email: "Email" },
   },
   terminal: {
-    title: "Interactive Showcase CLI Simulator — mahmoud@devops-demo:~",
-    badge: "Showcase CLI Demo",
-    note: "Showcase note: Interactive browser-based simulation illustrating real project architectures, not a live production server connection.",
-    hint: "Browser-based demo simulator showcasing DevOps commands & project portfolio:",
-    prompt: "mahmoud@devops-demo:~$",
+    title: "mahmoud@devops-server:~",
+    badge: "Ubuntu 22.04 LTS",
+    note: "Interactive terminal simulation of real cloud architectures.",
+    hint: "Type commands like 'status', 'docker ps', or use quick keys below:",
+    prompt: "mahmoud@devops:~$",
     quickBtns: [
       { label: "status", cmd: "status" },
       { label: "docker ps", cmd: "docker ps" },
