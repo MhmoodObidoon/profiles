@@ -141,7 +141,7 @@ const DevOpsTerminal = () => {
           <div className="text-xs md:text-sm text-slate-200 space-y-1 my-1">
             <p className="font-bold text-amber-400">[PROFILE] {t.hero.name}</p>
             <p className="text-slate-300">{t.hero.role}</p>
-            <p className="text-muted-foreground text-xs font-sans">{t.about.introPost}</p>
+            <p className="text-muted-foreground text-xs font-sans">{t.about.paragraphs[0]}</p>
           </div>
         );
         break;

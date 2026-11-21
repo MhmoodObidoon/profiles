@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { GitCommit, CheckCircle2, Package, Server, Activity, Play, RefreshCw, Terminal } from "lucide-react";
+import { GitCommit, CheckCircle2, Package, Server, Activity, Play, RefreshCw, Terminal, Workflow } from "lucide-react";
 import { useLang } from "@/i18n/LangContext";
 
 interface PipelineStep {
@@ -99,18 +99,15 @@ const PipelineVisualizer = () => {
   }, [currentStep, isRunning, lang]);
 
   return (
-    <div className="w-full max-w-5xl mx-auto rounded-3xl border border-primary/30 bg-card/90 backdrop-blur-xl p-6 md:p-8 shadow-2xl shadow-primary/10 relative overflow-hidden dir-ltr">
-      {/* Glow background accent */}
-      <div className="absolute top-0 right-1/3 w-64 h-64 rounded-full bg-primary/10 blur-[100px] pointer-events-none" aria-hidden />
-
+    <div className="w-full max-w-5xl mx-auto rounded-2xl border border-border/80 bg-card p-6 md:p-8 shadow-sm relative overflow-hidden" dir="ltr">
       {/* Header */}
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8 pb-6 border-b border-border/80 text-start">
         <div className="space-y-1">
-          <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-primary uppercase tracking-wider bg-primary/10 px-3 py-1 rounded-full border border-primary/20">
-            <Sparkles className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 text-xs font-mono font-medium text-primary bg-primary/10 px-3 py-1 rounded-md border border-primary/20">
+            <Workflow className="w-3.5 h-3.5" />
             <span>{lang === "ar" ? "محاكي خط النشر الآلي CI/CD" : "Interactive CI/CD Pipeline Visualizer"}</span>
           </div>
-          <h3 className="text-xl md:text-2xl font-extrabold text-foreground tracking-tight">
+          <h3 className="text-xl md:text-2xl font-bold text-foreground tracking-normal">
             {lang === "ar" ? "استكشف محاكاة توضيحية لخط CI/CD" : "Explore a Simulated CI/CD Workflow"}
           </h3>
         </div>
