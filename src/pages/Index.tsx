@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+import { ArrowUp } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -17,6 +19,15 @@ const scrollToId = (id: string) => {
 
 const Index = () => {
   const { t } = useLang();
+  const [showTopBtn, setShowTopBtn] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      setShowTopBtn(window.scrollY > 400);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const links = [
     { id: "about", label: t.navbar.about },
@@ -47,6 +58,17 @@ const Index = () => {
       <Education />
       <Contact />
       <WhatsAppButton />
+
+      {/* Floating Back to Top Button */}
+      {showTopBtn && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          aria-label={t.navbar.backToTop}
+          className="fixed bottom-6 end-6 z-50 p-3.5 rounded-full bg-card/90 hover:bg-card border border-border/80 hover:border-primary/60 text-foreground hover:text-primary shadow-xl backdrop-blur-md hover:scale-110 transition-all duration-300 animate-fade-in group cursor-pointer"
+        >
+          <ArrowUp className="w-5 h-5 group-hover:-translate-y-0.5 transition-transform" />
+        </button>
+      )}
 
       <footer className="bg-card/90 border-t border-border py-12">
         <div className="container px-4">

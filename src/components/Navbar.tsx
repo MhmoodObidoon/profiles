@@ -8,6 +8,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("");
+  const [scrollProgress, setScrollProgress] = useState(0);
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
   const { lang, setLang, t } = useLang();
@@ -18,6 +19,10 @@ const Navbar = () => {
     const sectionIds = ["about", "skills", "projects", "experience", "education", "contact"];
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 40);
+
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = totalHeight > 0 ? (window.scrollY / totalHeight) * 100 : 0;
+      setScrollProgress(progress);
 
       const scrollPosition = window.scrollY + 180;
       let currentSection = "";
@@ -72,6 +77,13 @@ const Navbar = () => {
           : "bg-transparent py-3 border-b border-transparent"
       }`}
     >
+      {/* Scroll Progress Bar */}
+      <div
+        className="absolute top-0 start-0 h-[2.5px] bg-gradient-to-r from-primary via-cyan-400 to-accent transition-all duration-75 ease-out z-[60]"
+        style={{ width: `${scrollProgress}%` }}
+        aria-hidden
+      />
+
       <div className="container px-4">
         <div className="flex items-center justify-between h-16 md:h-18">
           {/* Logo Button */}

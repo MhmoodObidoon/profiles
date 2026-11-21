@@ -19,10 +19,12 @@ import {
   FlaskConical,
   ShieldCheck,
   Lock,
+  FolderGit2,
   type LucideIcon,
 } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import SectionHeader from "@/components/SectionHeader";
+import { Button } from "@/components/ui/button";
 import { useLang } from "@/i18n/LangContext";
 
 interface ProjectItem {
@@ -98,6 +100,11 @@ const Projects = () => {
     { id: "Security", labelAr: "الشبكات والأمان", labelEn: "Security" },
   ];
 
+  const getCategoryCount = (catId: string) => {
+    if (catId === "All") return t.projects.items.length;
+    return t.projects.items.filter((p) => p.category === catId).length;
+  };
+
   const filteredProjects = activeCategory === "All"
     ? t.projects.items
     : t.projects.items.filter((p) => p.category === activeCategory);
@@ -127,17 +134,27 @@ const Projects = () => {
             {categories.map((cat) => {
               const label = lang === "ar" ? cat.labelAr : cat.labelEn;
               const isSelected = activeCategory === cat.id;
+              const count = getCategoryCount(cat.id);
               return (
                 <button
                   key={cat.id}
                   onClick={() => setActiveCategory(cat.id)}
-                  className={`px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 ${
+                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 ${
                     isSelected
                       ? "bg-primary text-primary-foreground shadow-lg shadow-primary/25 border border-primary"
                       : "bg-background/80 hover:bg-card border border-border text-muted-foreground hover:text-foreground"
                   }`}
                 >
-                  {label}
+                  <span>{label}</span>
+                  <span
+                    className={`px-1.5 py-0.5 rounded-full text-[10px] font-mono font-bold leading-none ${
+                      isSelected
+                        ? "bg-primary-foreground/20 text-primary-foreground"
+                        : "bg-muted text-muted-foreground"
+                    }`}
+                  >
+                    {count}
+                  </span>
                 </button>
               );
             })}
@@ -351,6 +368,26 @@ const Projects = () => {
                 </Reveal>
               );
             })}
+
+            {/* Empty State if no projects match category */}
+            {filteredProjects.length === 0 && (
+              <div className="col-span-full py-16 text-center space-y-4 rounded-2xl border border-dashed border-border/80 bg-background/50 p-8">
+                <div className="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mx-auto">
+                  <FolderGit2 className="w-6 h-6" />
+                </div>
+                <div className="space-y-1">
+                  <h4 className="font-bold text-foreground text-base">
+                    {lang === "ar" ? "لا توجد مشاريع في هذا التصنيف حالياً" : "No projects found in this category"}
+                  </h4>
+                  <p className="text-xs text-muted-foreground">
+                    {lang === "ar" ? "يمكنك استعراض كافة المشاريع بالضغط على الزر أدناه" : "Browse all projects by resetting the filter"}
+                  </p>
+                </div>
+                <Button variant="outline" size="sm" onClick={() => setActiveCategory("All")} className="font-bold text-primary">
+                  {lang === "ar" ? "عرض جميع المشاريع" : "Show All Projects"}
+                </Button>
+              </div>
+            )}
           </div>
         </div>
       </div>

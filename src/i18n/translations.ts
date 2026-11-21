@@ -883,6 +883,7 @@ const en: Translations = {
       {
         title: "Freelance DevOps & Cloud Infrastructure Engineer",
         subtitle: "Freelance DevOps & Cloud Infrastructure Engineer",
+        period: "2024 – Present",
         type: "Freelance / Contract",
         tasks: [
           { label: "System Provisioning & Deployment", desc: "Set up cloud servers and a stable hosting environment for a client application using Docker containers." },
@@ -894,6 +895,7 @@ const en: Translations = {
       {
         title: "DevOps & Systems Application Support Engineer",
         subtitle: "DevOps & Systems Application Support",
+        period: "2023 – 2024",
         type: "Freelance / Contract",
         tasks: [
           { label: "Application Deployment", desc: "Deployed the target environment to the server with proper configuration and environment variables." },

@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Workflow, Cloud, Activity, ShieldCheck, CheckCircle2, FlaskConical, BookOpen } from "lucide-react";
+import { Workflow, Cloud, Activity, ShieldCheck, CheckCircle2, FlaskConical, BookOpen, Layers } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import SectionHeader from "@/components/SectionHeader";
+import { Button } from "@/components/ui/button";
 import { useLang } from "@/i18n/LangContext";
 
 const icons = {
@@ -36,7 +37,7 @@ const levelBadgeConfig: Record<string, { bg: string; text: string; border: strin
 };
 
 const Skills = () => {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const [selectedLevel, setSelectedLevel] = useState<string>("all");
 
   const filterOptions = [
@@ -45,6 +46,22 @@ const Skills = () => {
     { id: "lab", label: t.skills.levelFilters.lab },
     { id: "foundation", label: t.skills.levelFilters.foundation },
   ];
+
+  const getLevelCount = (levelId: string) => {
+    let count = 0;
+    for (const cat of t.skills.categories) {
+      if (levelId === "all") {
+        count += cat.items.length;
+      } else {
+        count += cat.items.filter((item) => item.level === levelId).length;
+      }
+    }
+    return count;
+  };
+
+  const totalVisibleSkills = t.skills.categories.reduce((acc, cat) => {
+    return acc + cat.items.filter((item) => selectedLevel === "all" || item.level === selectedLevel).length;
+  }, 0);
 
   return (
     <section id="skills" className="py-24 bg-background relative overflow-hidden">
@@ -81,17 +98,27 @@ const Skills = () => {
           <div className="flex flex-wrap justify-center items-center gap-2 mb-12">
             {filterOptions.map((opt) => {
               const isSelected = selectedLevel === opt.id;
+              const count = getLevelCount(opt.id);
               return (
                 <button
                   key={opt.id}
                   onClick={() => setSelectedLevel(opt.id)}
-                  className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 ${
+                  className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 ${
                     isSelected
                       ? "bg-primary text-primary-foreground shadow-md shadow-primary/20 border border-primary"
                       : "bg-card hover:bg-card/80 border border-border text-muted-foreground hover:text-foreground"
                   }`}
                 >
-                  {opt.label}
+                  <span>{opt.label}</span>
+                  <span
+                    className={`px-1.5 py-0.5 rounded-full text-[10px] font-mono font-bold leading-none ${
+                      isSelected
+                        ? "bg-primary-foreground/20 text-primary-foreground"
+                        : "bg-muted text-muted-foreground"
+                    }`}
+                  >
+                    {count}
+                  </span>
                 </button>
               );
             })}
@@ -118,8 +145,13 @@ const Skills = () => {
                         <div className="p-3.5 rounded-2xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground shadow-sm transition-all duration-300">
                           <Icon className="w-6 h-6" />
                         </div>
-                        <div className="text-start">
-                          <h3 className="text-xl font-extrabold text-foreground tracking-tight">{cat.title}</h3>
+                        <div className="flex-1 text-start">
+                          <div className="flex items-center justify-between gap-2">
+                            <h3 className="text-xl font-extrabold text-foreground tracking-tight">{cat.title}</h3>
+                            <span className="text-[11px] font-mono font-semibold px-2 py-0.5 rounded-md bg-secondary text-secondary-foreground border border-border/60">
+                              {matchingItems.length} {lang === "ar" ? "مهارات" : "skills"}
+                            </span>
+                          </div>
                           <p className="text-xs font-mono text-muted-foreground mt-0.5" dir="ltr">
                             {cat.subtitle}
                           </p>
@@ -162,6 +194,26 @@ const Skills = () => {
                 </Reveal>
               );
             })}
+
+            {/* Empty State if no skills match level */}
+            {totalVisibleSkills === 0 && (
+              <div className="col-span-full py-16 text-center space-y-4 rounded-2xl border border-dashed border-border/80 bg-card/50 p-8">
+                <div className="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mx-auto">
+                  <Layers className="w-6 h-6" />
+                </div>
+                <div className="space-y-1">
+                  <h4 className="font-bold text-foreground text-base">
+                    {lang === "ar" ? "لا توجد مهارات في هذا المستوى حالياً" : "No skills found for this level"}
+                  </h4>
+                  <p className="text-xs text-muted-foreground">
+                    {lang === "ar" ? "يمكنك استعراض كافة المهارات بالضغط على الزر أدناه" : "Browse all skills by resetting the filter"}
+                  </p>
+                </div>
+                <Button variant="outline" size="sm" onClick={() => setSelectedLevel("all")} className="font-bold text-primary">
+                  {lang === "ar" ? "عرض جميع المهارات" : "Show All Skills"}
+                </Button>
+              </div>
+            )}
           </div>
         </div>
       </div>
