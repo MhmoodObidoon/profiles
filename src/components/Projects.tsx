@@ -139,9 +139,9 @@ const Projects = () => {
                 <button
                   key={cat.id}
                   onClick={() => setActiveCategory(cat.id)}
-                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 ${
+                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-colors ${
                     isSelected
-                      ? "bg-primary text-primary-foreground shadow-lg shadow-primary/25 border border-primary"
+                      ? "bg-primary text-primary-foreground border border-primary shadow-xs"
                       : "bg-background/80 hover:bg-card border border-border text-muted-foreground hover:text-foreground"
                   }`}
                 >
@@ -188,7 +188,7 @@ const Projects = () => {
                           <div className="p-2.5 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                             <CategoryIcon className="w-5 h-5" />
                           </div>
-                          <span className="text-xs font-bold uppercase tracking-wider text-primary">
+                          <span className="text-xs font-semibold capitalize tracking-normal text-primary">
                             {project.category}
                           </span>
                         </div>

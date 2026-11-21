@@ -147,7 +147,7 @@ const Skills = () => {
                         </div>
                         <div className="flex-1 text-start">
                           <div className="flex items-center justify-between gap-2">
-                            <h3 className="text-xl font-extrabold text-foreground tracking-tight">{cat.title}</h3>
+                            <h3 className="text-xl font-bold text-foreground tracking-normal">{cat.title}</h3>
                             <span className="text-[11px] font-mono font-semibold px-2 py-0.5 rounded-md bg-secondary text-secondary-foreground border border-border/60">
                               {matchingItems.length} {lang === "ar" ? "مهارات" : "skills"}
                             </span>
@@ -167,7 +167,7 @@ const Skills = () => {
                           return (
                             <div key={skill.label} className="border-s-2 border-primary/50 ps-4 space-y-1.5 text-start">
                               <div className="flex flex-wrap items-center justify-between gap-2">
-                                <p className="font-extrabold text-sm text-foreground">{skill.label}</p>
+                                <p className="font-bold text-sm text-foreground">{skill.label}</p>
                                 <span
                                   className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold border ${levelCfg.border} ${levelCfg.bg} ${levelCfg.text}`}
                                 >

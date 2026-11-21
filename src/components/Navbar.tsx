@@ -79,7 +79,7 @@ const Navbar = () => {
     >
       {/* Scroll Progress Bar */}
       <div
-        className="absolute top-0 start-0 h-[2.5px] bg-gradient-to-r from-primary via-cyan-400 to-accent transition-all duration-75 ease-out z-[60]"
+        className="absolute top-0 start-0 h-[2px] bg-primary transition-all duration-75 ease-out z-[60]"
         style={{ width: `${scrollProgress}%` }}
         aria-hidden
       />

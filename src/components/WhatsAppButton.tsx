@@ -13,14 +13,9 @@ const WhatsAppButton = () => {
         target="_blank"
         rel="noreferrer"
         aria-label={t.whatsapp}
-        className="relative flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] text-white shadow-xl hover:scale-110 hover:shadow-2xl transition-all"
+        className="flex items-center justify-center w-12 h-12 rounded-full bg-[#25D366] text-white shadow-md hover:bg-[#20ba59] active:scale-95 transition-transform duration-200"
       >
-        {/* Subtle breathing ping ring */}
-        <span
-          className="absolute inset-0 rounded-full bg-[#25D366] opacity-40 animate-ping -z-10 pointer-events-none"
-          aria-hidden
-        />
-        <MessageCircle className="w-7 h-7" />
+        <MessageCircle className="w-6 h-6" />
       </a>
 
       {/* Floating Hover Tooltip */}

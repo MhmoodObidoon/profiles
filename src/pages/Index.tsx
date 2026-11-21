@@ -64,7 +64,7 @@ const Index = () => {
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           aria-label={t.navbar.backToTop}
-          className="fixed bottom-6 end-6 z-50 p-3.5 rounded-full bg-card/90 hover:bg-card border border-border/80 hover:border-primary/60 text-foreground hover:text-primary shadow-xl backdrop-blur-md hover:scale-110 transition-all duration-300 animate-fade-in group cursor-pointer"
+          className="fixed bottom-6 end-6 z-50 p-3 rounded-full bg-card/90 hover:bg-card border border-border/80 hover:border-primary/60 text-foreground hover:text-primary shadow-md backdrop-blur-md transition-colors group cursor-pointer"
         >
           <ArrowUp className="w-5 h-5 group-hover:-translate-y-0.5 transition-transform" />
         </button>
@@ -76,7 +76,7 @@ const Index = () => {
             <div className="flex items-center gap-3 text-center md:text-start">
               <DevOpsLogo className="w-12 h-7 shrink-0" />
               <div className="space-y-0.5">
-                <p className="font-extrabold text-xl text-foreground tracking-tight">{t.footer.name}</p>
+                <p className="font-bold text-lg text-foreground">{t.footer.name}</p>
                 <p className="text-sm text-muted-foreground">{t.footer.role}</p>
               </div>
             </div>

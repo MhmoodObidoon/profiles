@@ -299,7 +299,7 @@ const Contact = () => {
                   <button
                     type="submit"
                     disabled={status === "sending"}
-                    className="w-full flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 disabled:opacity-60 text-primary-foreground font-bold px-8 py-4 rounded-xl text-lg shadow-xl shadow-primary/20 hover:shadow-primary/35 transition-all"
+                    className="w-full flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 disabled:opacity-60 text-primary-foreground font-semibold px-6 py-3.5 rounded-xl text-base transition-colors cursor-pointer"
                   >
                     {status === "sending" ? (
                       <>

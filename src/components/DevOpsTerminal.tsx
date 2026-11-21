@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Terminal as TerminalIcon, CornerDownLeft, Sparkles, Info } from "lucide-react";
+import { Terminal as TerminalIcon, CornerDownLeft } from "lucide-react";
 import { useLang } from "@/i18n/LangContext";
 
 interface CommandLog {
@@ -25,7 +25,7 @@ const DevOpsTerminal = () => {
         content: (
           <div className="space-y-1 text-xs md:text-sm font-mono pb-2 border-b border-slate-800/80">
             <p className="text-cyan-400 font-bold">
-              🚀 Mahmoud Ahmed Obaidon — DevOps &amp; Cloud Shell (v2.4)
+              Mahmoud Ahmed Obaidon — DevOps &amp; Cloud Shell (v2.4)
             </p>
             <p className="text-slate-400 text-xs">
               Ubuntu 22.04 LTS • Docker 26.x • Nginx • CI/CD • Terraform
@@ -65,7 +65,7 @@ const DevOpsTerminal = () => {
           type: "output",
           content: (
             <div className="space-y-1 text-xs md:text-sm font-mono pb-2 border-b border-slate-800/80">
-              <p className="text-cyan-400 font-bold">🚀 Mahmoud Ahmed Obaidon — DevOps Shell</p>
+              <p className="text-cyan-400 font-bold">Mahmoud Ahmed Obaidon — DevOps Shell</p>
               <p className="text-slate-400 text-xs">Terminal cleared. Type 'help' for commands list.</p>
             </div>
           ),
@@ -83,7 +83,7 @@ const DevOpsTerminal = () => {
         outputNode = (
           <div className="space-y-1.5 text-xs md:text-sm border-s-2 border-emerald-500/80 ps-3 my-1">
             <p className="text-emerald-400 font-bold font-mono">
-              🟢 ARCHITECTURE STATUS: VERIFIED LAB &amp; CLIENT CONFIGS
+              [OK] ARCHITECTURE STATUS: VERIFIED LAB &amp; CLIENT CONFIGS
             </p>
             <p className="text-slate-300">
               • Target OS: <span className="text-cyan-300 font-mono">Ubuntu Linux 22.04 LTS (x86_64 VPS)</span>
@@ -109,8 +109,8 @@ const DevOpsTerminal = () => {
             <p className="text-slate-300">
               • Observability: <span className="text-cyan-300 font-mono">Prometheus Exporter + Grafana Dashboard (Health Alerts)</span>
             </p>
-            <p className="text-[11px] text-slate-400 italic pt-1 font-sans">
-              ℹ️ {lang === "ar" ? "بيانات توضيحية مستمدة من التكوينات والمشاريع الفعلية المنفذة محلياً وللعملاء." : "Demo outputs reflecting actual project and client architectures implemented by Mahmoud."}
+            <p className="text-[11px] text-slate-400 pt-1 font-sans">
+              * {lang === "ar" ? "بيانات توضيحية مستمدة من التكوينات والمشاريع الفعلية المنفذة محلياً وللعملاء." : "Demo outputs reflecting actual project and client architectures implemented by Mahmoud."}
             </p>
           </div>
         );
@@ -128,8 +128,8 @@ const DevOpsTerminal = () => {
               <p>e5f6a1b2c3d4   postgres:16-alpine    "docker-entrypoint.s…"   Up 3 days      5432/tcp (postgres-db)</p>
               <p>3c4d5e6f7a8b   prom/node-exporter    "/bin/node_exporter"     Up 3 days      9100/tcp (node-exporter)</p>
             </div>
-            <p className="text-[11px] text-slate-400 italic pt-1 font-sans">
-              ℹ️ {lang === "ar" ? "محاكاة طبولوجيا الحاويات من مشروع تشغيل Django و PostgreSQL و Nginx الفعلي." : "Simulated container topology based on the actual Django, PostgreSQL, and Nginx setup."}
+            <p className="text-[11px] text-slate-400 pt-1 font-sans">
+              * {lang === "ar" ? "محاكاة طبولوجيا الحاويات من مشروع تشغيل Django و PostgreSQL و Nginx الفعلي." : "Simulated container topology based on the actual Django, PostgreSQL, and Nginx setup."}
             </p>
           </div>
         );
@@ -139,7 +139,7 @@ const DevOpsTerminal = () => {
       case "about":
         outputNode = (
           <div className="text-xs md:text-sm text-slate-200 space-y-1 my-1">
-            <p className="font-bold text-amber-400">👤 {t.hero.name}</p>
+            <p className="font-bold text-amber-400">[PROFILE] {t.hero.name}</p>
             <p className="text-slate-300">{t.hero.role}</p>
             <p className="text-muted-foreground text-xs font-sans">{t.about.introPost}</p>
           </div>
@@ -150,7 +150,7 @@ const DevOpsTerminal = () => {
       case "stack":
         outputNode = (
           <div className="text-xs md:text-sm text-cyan-300 my-1 space-y-1.5">
-            <p className="font-bold text-amber-300">⚡ APPLIED TECH STACK &amp; TOOLS:</p>
+            <p className="font-bold text-amber-300">[TECH STACK] APPLIED TOOLS &amp; INFRASTRUCTURE:</p>
             <p className="text-slate-200">
               • CI/CD &amp; Containers: <span className="text-emerald-300">Docker, Docker Compose, Kubernetes, GitHub Actions, Jenkins</span>
             </p>
@@ -170,7 +170,7 @@ const DevOpsTerminal = () => {
       case "projects":
         outputNode = (
           <div className="text-xs md:text-sm my-1 space-y-1.5 text-slate-200">
-            <p className="font-bold text-cyan-400">📦 VERIFIED PRACTICAL PROJECTS &amp; CLIENT WORK:</p>
+            <p className="font-bold text-cyan-400">[PROJECTS] VERIFIED PRACTICAL CLIENT WORK &amp; LABS:</p>
             <p>1. <span className="text-amber-300 font-semibold">Django + Docker Production:</span> Multi-container stack with Nginx reverse proxy, PostgreSQL, and SSL.</p>
             <p>2. <span className="text-amber-300 font-semibold">RealWorld CI/CD &amp; Terraform:</span> GitHub Actions pipeline with Trivy vulnerability scanning &amp; AWS IaC.</p>
             <p>3. <span className="text-amber-300 font-semibold">HR Enterprise Client App:</span> Client deployment on Ubuntu Linux using systemd services and Nginx.</p>
@@ -178,7 +178,7 @@ const DevOpsTerminal = () => {
             <p>5. <span className="text-amber-300 font-semibold">Kubernetes Microservices Lab:</span> Hands-on cluster with Ingress routing, Deployments, and PVC storage.</p>
             <p>6. <span className="text-amber-300 font-semibold">Server Health Inspector:</span> Automated Python/Bash script monitoring CPU/RAM/Disk with Prometheus metrics.</p>
             <p className="text-[11px] text-slate-400 pt-1 font-sans">
-              💡 {lang === "ar" ? "راجع قسم المشاريع بالأسفل للاطلاع على المخططات المعمارية وأوامر التشغيل وسجلات التحقق." : "Explore the Projects section below for architectural diagrams, run commands, and execution logs."}
+              * {lang === "ar" ? "راجع قسم المشاريع بالأسفل للاطلاع على المخططات المعمارية وأوامر التشغيل وسجلات التحقق." : "Explore the Projects section below for architectural diagrams, run commands, and execution logs."}
             </p>
           </div>
         );
@@ -188,7 +188,7 @@ const DevOpsTerminal = () => {
       case "email":
         outputNode = (
           <div className="text-xs md:text-sm my-1 text-emerald-300 space-y-1">
-            <p className="font-bold text-white">📬 CONTACT INFO:</p>
+            <p className="font-bold text-white">[CONTACT] REACH OUT:</p>
             <p>Email: <a href="mailto:mhmoodobidoon@gmail.com" className="underline text-cyan-400">mhmoodobidoon@gmail.com</a></p>
             <p>Phone / WhatsApp: <span className="text-amber-300" dir="ltr">+967 772 944 392</span></p>
             <p>Location: Tarim, Hadhramout — Yemen</p>
@@ -199,7 +199,7 @@ const DevOpsTerminal = () => {
       case "help":
         outputNode = (
           <div className="text-xs md:text-sm text-slate-300 my-1 space-y-1">
-            <p className="font-bold text-amber-400">💡 Available Commands:</p>
+            <p className="font-bold text-amber-400">[HELP] Available Commands:</p>
             <p className="font-mono text-cyan-300">
               status | docker ps | whoami | skills | projects | contact | matrix | clear
             </p>
@@ -209,7 +209,7 @@ const DevOpsTerminal = () => {
 
       case "matrix":
         outputNode = (
-          <div className="text-xs font-mono text-emerald-400 space-y-0.5 animate-pulse my-1">
+          <div className="text-xs font-mono text-emerald-400 space-y-0.5 my-1">
             <p>01000100 01000101 01010110 01001111 01010000 01010011 (DEVOPS)</p>
             <p>HOST: UBUNTU LINUX | DOCKER: RUNNING | NGINX: PROXY 200 OK</p>
             <p>AUTOMATING INFRASTRUCTURE &amp; CONTINUOUS INTEGRATION... COMPLETED!</p>
@@ -244,7 +244,7 @@ const DevOpsTerminal = () => {
   return (
     <div
       dir="ltr"
-      className="w-full max-w-4xl mx-auto rounded-2xl border border-primary/30 bg-slate-950/95 text-slate-100 shadow-2xl shadow-primary/10 overflow-hidden font-mono text-left"
+      className="w-full max-w-4xl mx-auto rounded-2xl border border-border/80 bg-slate-950 text-slate-100 shadow-lg overflow-hidden font-mono text-left"
     >
       {/* Header bar */}
       <div className="flex items-center justify-between px-4 py-2.5 bg-slate-900/90 border-b border-slate-800 select-none">
@@ -258,7 +258,7 @@ const DevOpsTerminal = () => {
           </span>
         </div>
         <div className="flex items-center gap-1.5 text-[11px] font-mono font-medium text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/20">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
           <span>online</span>
         </div>
       </div>
@@ -310,7 +310,7 @@ const DevOpsTerminal = () => {
           <button
             key={btn.label}
             onClick={() => handleRunCommand(btn.cmd)}
-            className="px-2.5 py-1 rounded bg-slate-800/90 hover:bg-primary/20 text-cyan-300 hover:text-cyan-200 border border-slate-700/60 hover:border-primary/40 text-xs transition-all font-mono"
+            className="px-2.5 py-1 rounded bg-slate-800/90 hover:bg-primary/20 text-cyan-300 hover:text-cyan-200 border border-slate-700/60 hover:border-primary/40 text-xs transition-colors font-mono cursor-pointer"
           >
             {btn.label}
           </button>

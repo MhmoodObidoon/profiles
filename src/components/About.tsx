@@ -119,7 +119,7 @@ const About = () => {
 
               {/* The 4 Core Engineering Pillars */}
               <div className="pt-4 border-t border-border/70">
-                <h3 className="text-sm font-bold text-muted-foreground uppercase tracking-wider mb-4">
+                <h3 className="text-xs md:text-sm font-semibold text-muted-foreground tracking-normal mb-3">
                   {lang === "ar" ? "الركائز التقنية والتطبيقية:" : "Core Technical Pillars:"}
                 </h3>
                 <div className="grid sm:grid-cols-2 gap-4">
