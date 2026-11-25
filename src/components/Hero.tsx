@@ -45,8 +45,6 @@ const Hero = () => {
 
   return (
     <section className="min-h-screen flex flex-col justify-center relative overflow-hidden pt-28 pb-16">
-      <div className="absolute inset-0 bg-grid opacity-25" aria-hidden />
-
       <div className="container px-4 relative z-10 my-auto">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
@@ -114,7 +112,7 @@ const Hero = () => {
                       target="_blank"
                       rel="noreferrer"
                       aria-label={t.hero.socials[social.key as keyof typeof t.hero.socials]}
-                      className="p-2.5 rounded-xl border border-border/80 bg-card text-muted-foreground hover:text-foreground hover:border-border transition-colors"
+                      className="w-11 h-11 flex items-center justify-center rounded-xl border border-border/80 bg-card text-muted-foreground hover:text-foreground hover:border-primary/50 transition-colors"
                     >
                       <social.icon className="w-4 h-4" />
                     </a>

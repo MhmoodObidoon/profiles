@@ -58,8 +58,12 @@ const About = () => {
               {/* The 3 Core Story Paragraphs */}
               <div className="space-y-6 text-foreground/90 text-base md:text-lg leading-relaxed">
                 {/* Paragraph 1: Identity & Education */}
-                <div className="p-4 md:p-5 rounded-xl bg-background/70 border-s-4 border-primary border-y border-e border-border/80 shadow-xs">
-                  <p className="font-medium text-foreground leading-relaxed">
+                <div className="p-5 md:p-6 rounded-xl bg-card/60 border border-border/80 shadow-xs space-y-2">
+                  <div className="flex items-center gap-2 text-xs font-semibold text-primary">
+                    <GraduationCap className="w-4 h-4 shrink-0" />
+                    <span>{lang === "ar" ? "الهوية والتركيز الأكاديمي" : "Identity & Academic Focus"}</span>
+                  </div>
+                  <p className="font-medium text-foreground leading-relaxed text-sm sm:text-base">
                     {t.about.paragraphs[0]}
                   </p>
                 </div>

@@ -187,15 +187,6 @@ Brand identity extracted from logo:
     -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
   }
 
-  .bg-grid {
-    background-image:
-      linear-gradient(to left, hsl(var(--primary) / 0.1) 1px, transparent 1px),
-      linear-gradient(to bottom, hsl(var(--primary) / 0.1) 1px, transparent 1px);
-    background-size: 48px 48px;
-    mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 75%);
-    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 75%);
-  }
-
   .glass-panel {
     background: hsl(var(--card) / 0.7);
     backdrop-filter: blur(16px);

@@ -263,7 +263,7 @@ const Projects = () => {
                               <Network className="w-3.5 h-3.5" />
                               <span>{t.projects.architectureLabel}</span>
                             </div>
-                            <p className="text-slate-200 dir-ltr text-xs leading-relaxed bg-slate-900/90 p-3 rounded-lg border border-slate-800">
+                            <p className="text-slate-200 text-xs leading-relaxed bg-slate-900/90 p-3 rounded-lg border border-slate-800" dir="ltr">
                               {project.architecture}
                             </p>
                           </div>
@@ -275,7 +275,7 @@ const Projects = () => {
                                 <Terminal className="w-3.5 h-3.5" />
                                 <span>{t.projects.verificationLabel}</span>
                               </div>
-                              <pre className="text-emerald-300 dir-ltr text-[11px] leading-relaxed bg-slate-900 p-3 rounded-lg border border-emerald-950/80 overflow-x-auto whitespace-pre-wrap font-mono">
+                              <pre className="text-emerald-300 text-[11px] leading-relaxed bg-slate-900 p-3 rounded-lg border border-emerald-950/80 overflow-x-auto whitespace-pre-wrap font-mono" dir="ltr">
                                 {project.verification}
                               </pre>
                             </div>
@@ -291,7 +291,7 @@ const Projects = () => {
                                 </div>
                                 <button
                                   onClick={() => handleCopyCmd(project.id, runCommand)}
-                                  className="inline-flex items-center gap-1 text-[11px] font-bold text-muted-foreground hover:text-primary transition-colors"
+                                  className="inline-flex items-center gap-1 text-[11px] font-bold text-muted-foreground hover:text-primary transition-colors cursor-pointer"
                                 >
                                   {copiedId === project.id ? (
                                     <>
@@ -306,7 +306,7 @@ const Projects = () => {
                                   )}
                                 </button>
                               </div>
-                              <pre className="text-slate-200 dir-ltr text-[11px] bg-slate-900/90 p-2.5 rounded-lg border border-slate-800 overflow-x-auto font-mono">
+                              <pre className="text-slate-200 text-[11px] bg-slate-900/90 p-2.5 rounded-lg border border-slate-800 overflow-x-auto font-mono" dir="ltr">
                                 {runCommand}
                               </pre>
                             </div>
@@ -318,7 +318,7 @@ const Projects = () => {
 
                     <div>
                       {/* Tags */}
-                      <div className="flex flex-wrap gap-1.5 mb-5 dir-ltr justify-start">
+                      <div className="flex flex-wrap gap-1.5 mb-5 justify-start" dir="ltr">
                         {project.tags.map((tag) => (
                           <span
                             key={tag}
@@ -334,7 +334,7 @@ const Projects = () => {
                         {/* Interactive Architecture Button */}
                         <button
                           onClick={() => setSelectedBlueprint(isExpanded ? null : project.id)}
-                          className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl border border-primary/30 bg-primary/5 hover:bg-primary/15 text-primary text-xs font-bold transition-all"
+                          className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl border border-primary/30 bg-primary/5 hover:bg-primary/15 text-primary text-xs font-bold transition-all cursor-pointer"
                         >
                           <Layers className="w-3.5 h-3.5" />
                           <span className="truncate">{t.projects.architectureView}</span>
@@ -355,7 +355,7 @@ const Projects = () => {
                             href={project.repoUrl || "https://github.com/Eng-m-devops"}
                             target="_blank"
                             rel="noreferrer"
-                            className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl border border-border bg-card hover:bg-background text-foreground hover:text-primary text-xs font-bold transition-all"
+                            className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl border border-border bg-card hover:bg-background text-foreground hover:text-primary text-xs font-bold transition-all cursor-pointer"
                           >
                             <Github className="w-3.5 h-3.5 text-primary shrink-0" />
                             <span className="truncate">{t.projects.viewRepoBtn}</span>

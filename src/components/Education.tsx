@@ -66,7 +66,7 @@ const Education = () => {
                         <span className="text-xs md:text-sm font-medium text-muted-foreground">{langItem.level}</span>
                       </div>
                       <div className="h-2.5 bg-muted rounded-full overflow-hidden">
-                        <div className={`h-full bg-gradient-to-r from-accent to-amber-500 rounded-full transition-all duration-500 ${langItem.width === "100%" ? "w-full" : "w-3/4"}`} />
+                        <div className={`h-full bg-accent rounded-full transition-all duration-300 ${langItem.width === "100%" ? "w-full" : "w-3/4"}`} />
                       </div>
                     </div>
                   ))}

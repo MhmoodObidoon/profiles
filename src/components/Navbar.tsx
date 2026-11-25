@@ -103,7 +103,7 @@ const Navbar = () => {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`relative px-3.5 py-1.5 rounded-full transition-all text-sm font-bold tracking-wide ${
+                  className={`relative px-3.5 py-1.5 rounded-full transition-colors text-sm font-bold tracking-wide cursor-pointer ${
                     isActive
                       ? "text-primary bg-primary/10 shadow-xs"
                       : "text-foreground/80 hover:text-primary"
@@ -123,7 +123,7 @@ const Navbar = () => {
             <button
               onClick={() => setLang(lang === "ar" ? "en" : "ar")}
               aria-label={t.navbar.toggleLang}
-              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl border border-border/80 bg-card/80 text-xs font-extrabold text-foreground hover:text-primary hover:border-primary/60 transition-all shadow-xs"
+              className="inline-flex items-center justify-center gap-1.5 px-3 min-h-[44px] rounded-xl border border-border/80 bg-card/80 text-xs font-bold text-foreground hover:text-primary hover:border-primary/60 transition-colors shadow-xs cursor-pointer"
             >
               <Languages className="w-4 h-4 text-primary" />
               <span dir="ltr">{lang === "ar" ? "EN" : "عربي"}</span>
@@ -132,7 +132,7 @@ const Navbar = () => {
             <button
               onClick={() => mounted && setTheme(theme === "dark" ? "light" : "dark")}
               aria-label={t.navbar.toggleTheme}
-              className="p-2 py-2 rounded-xl border border-border/80 bg-card/80 text-foreground hover:text-primary hover:border-primary/60 transition-all shadow-xs"
+              className="w-11 h-11 flex items-center justify-center rounded-xl border border-border/80 bg-card/80 text-foreground hover:text-primary hover:border-primary/60 transition-colors shadow-xs cursor-pointer"
             >
               {mounted && theme === "dark" ? (
                 <Sun className="w-4 h-4 text-amber-400" />
@@ -142,7 +142,7 @@ const Navbar = () => {
             </button>
 
             <button
-              className="md:hidden p-2 text-foreground hover:text-primary transition-colors rounded-lg"
+              className="md:hidden w-11 h-11 flex items-center justify-center text-foreground hover:text-primary transition-colors rounded-lg cursor-pointer"
               onClick={() => setIsOpen(!isOpen)}
               aria-label={t.navbar.toggleMenu}
               aria-expanded={isOpen}
@@ -176,9 +176,9 @@ const Navbar = () => {
                   <button
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
-                    className={`block w-full text-start py-3 px-4 rounded-xl font-bold transition-all text-base ${
+                    className={`block w-full text-start py-3 px-4 rounded-xl font-bold transition-colors text-base cursor-pointer ${
                       isActive
-                        ? "text-primary bg-primary/15 border-s-4 border-primary"
+                        ? "text-primary bg-primary/10 border border-primary/25"
                         : "text-foreground hover:text-primary hover:bg-card/80"
                     }`}
                   >

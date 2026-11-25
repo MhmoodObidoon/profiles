@@ -165,7 +165,7 @@ const Skills = () => {
                           const LevelIcon = levelCfg.icon;
 
                           return (
-                            <div key={skill.label} className="border-s-2 border-primary/50 ps-4 space-y-1.5 text-start">
+                            <div key={skill.label} className="p-3.5 rounded-xl bg-background/50 border border-border/70 hover:border-primary/40 transition-colors space-y-1.5 text-start">
                               <div className="flex flex-wrap items-center justify-between gap-2">
                                 <p className="font-bold text-sm text-foreground">{skill.label}</p>
                                 <span

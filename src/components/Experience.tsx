@@ -80,10 +80,10 @@ const Experience = () => {
                           )}
                         </header>
 
-                        <ul className="space-y-5">
+                        <ul className="space-y-3.5">
                           {exp.tasks.map((task) => (
-                            <li key={task.label} className="border-s-2 border-primary/50 ps-4 text-start">
-                              <p className="font-bold text-card-foreground mb-1 text-sm">{task.label}</p>
+                            <li key={task.label} className="p-3.5 rounded-xl bg-card/60 border border-border/70 space-y-1 text-start">
+                              <p className="font-bold text-card-foreground text-sm">{task.label}</p>
                               <p className="text-muted-foreground text-xs md:text-sm leading-relaxed">{task.desc}</p>
                             </li>
                           ))}
